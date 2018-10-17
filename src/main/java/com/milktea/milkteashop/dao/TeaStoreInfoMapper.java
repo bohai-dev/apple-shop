@@ -53,4 +53,10 @@ public interface TeaStoreInfoMapper {
     
     @Select(value="select count(1) from TEA_STORE_INFO where STORE_USER_NAME = #{userName} and STORE_NO != #{storeNo}")
     Long countOtherByStoreUserName(@Param("storeNo")String storeNo, @Param("userName")String userName);
+    
+    //根据分类查询店铺
+    @Select(value="select * from TEA_STORE_INFO t "
+            + "where exists (select 1 from TEA_GOODS_INFO t1 where t.STORE_NO = t1.STORE_NO and t1.DELETE_FLAG = '0' "
+            + "and exists (select 1 from TEA_GOODS_CLASS t2 where t2.GOODS_ID = t1.GOODS_ID and t2.CLASS_ID = #{classId}))")
+    List<TeaStoreInfo> selectByClass(@Param("classId")String classId);
 }

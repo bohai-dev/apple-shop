@@ -418,7 +418,8 @@ public class GoodsServiceImpl implements GoodsService {
         
         List<TeaClassInfo> classInfos = null;
         TeaClassInfo classInfo = new TeaClassInfo();
-        classInfo.setClassType(requestVo.getClassType());
+        //没有分类类型
+        //classInfo.setClassType(requestVo.getClassType());
         try {
             classInfos = this.classInfoMapper.selectByCondition(classInfo);
         } catch (Exception e) {
@@ -590,7 +591,8 @@ public class GoodsServiceImpl implements GoodsService {
         
         List<TeaClassInfo> classInfos = null;
         TeaClassInfo classInfo = new TeaClassInfo();
-        classInfo.setClassType(requestVo.getClassType());
+        //不需要类型
+        //classInfo.setClassType(requestVo.getClassType());
         try {
             classInfos = this.classInfoMapper.selectByCondition(classInfo);
         } catch (Exception e) {
@@ -610,13 +612,9 @@ public class GoodsServiceImpl implements GoodsService {
                     logger.error(MilkTeaErrorConstant.UNKNOW_EXCEPTION.getCnErrorMsg(), e);
                     throw new MilkTeaException(MilkTeaErrorConstant.UNKNOW_EXCEPTION, e);
                 }
-                if(requestVo.getLang().equals("zh")){
-                    classInfoVo.setClassName(teaClassInfo.getCnClassName());
-                    classInfoVo.setClassLogo(teaClassInfo.getCnClassLogo());
-                }else if (requestVo.getLang().equals("en")) {
-                    classInfoVo.setClassName(teaClassInfo.getUsClassName());
-                    classInfoVo.setClassLogo(teaClassInfo.getUsClassLogo());
-                }
+                
+                classInfoVo.setClassName(teaClassInfo.getCnClassName());
+                classInfoVo.setClassLogo(teaClassInfo.getCnClassLogo());
                 
                 //根据商品分类查询商品信息
                 List<TeaGoodsInfo> goodsList = null;
@@ -625,6 +623,7 @@ public class GoodsServiceImpl implements GoodsService {
                 goodsInfo.setClassId(teaClassInfo.getClassId());
                 //只查询在售商品
                 goodsInfo.setGoodsStatus("1");
+                
                 try {
                     goodsList = this.goodsInfoMapper.selectByCondition(goodsInfo);
                 } catch (Exception e) {
@@ -632,7 +631,7 @@ public class GoodsServiceImpl implements GoodsService {
                     throw new MilkTeaException(MilkTeaErrorConstant.DATABASE_ACCESS_FAILURE, e);
                 }
                 
-                //查询商品属性
+                //查询商品规格
                 List<GoodsInfoNationVo> goodsInfoVos = null;
                 if(goodsList != null){
                     goodsInfoVos = new ArrayList<GoodsInfoNationVo>();
@@ -645,40 +644,13 @@ public class GoodsServiceImpl implements GoodsService {
                             throw new MilkTeaException(MilkTeaErrorConstant.UNKNOW_EXCEPTION, e);
                         }
                         
-                        if(requestVo.getLang().equals("zh")){
-                            goodsInfoVo.setGoodsName(info.getCnGoodsName());
-                            goodsInfoVo.setGoodsIntroduction(info.getCnGoodsIntroduction());
-                            goodsInfoVo.setGoodsPictureBig(info.getCnGoodsPictureBig());
-                            goodsInfoVo.setGoodsPictureRound(info.getCnGoodsPictureRound());
-                        }else if (requestVo.getLang().equals("en")) {
-                            goodsInfoVo.setGoodsName(info.getUsGoodsName());
-                            goodsInfoVo.setGoodsIntroduction(info.getUsGoodsIntroduction());
-                            goodsInfoVo.setGoodsPictureBig(info.getUsGoodsPictureBig());
-                            goodsInfoVo.setGoodsPictureRound(info.getUsGoodsPictureRound());
-                        }
+                        goodsInfoVo.setGoodsName(info.getCnGoodsName());
+                        goodsInfoVo.setGoodsIntroduction(info.getCnGoodsIntroduction());
+                        goodsInfoVo.setGoodsPictureBig(info.getCnGoodsPictureBig());
+                        goodsInfoVo.setGoodsPictureRound(info.getCnGoodsPictureRound());
                         
-                        List<TeaAttributesInfo> attributesInfos = null;
-                        try {
-                            attributesInfos = this.attributesInfoMapper.selectByGoodsId(info.getGoodsId());
-                        } catch (Exception e) {
-                            logger.error(MilkTeaErrorConstant.DATABASE_ACCESS_FAILURE.getCnErrorMsg(), e);
-                            throw new MilkTeaException(MilkTeaErrorConstant.DATABASE_ACCESS_FAILURE, e);
-                        }
+                        //TODO 查询规格
                         
-                        if(attributesInfos != null && attributesInfos.size() > 0){
-                            List<TeaAttributesInfoNationVo> nationVos = new ArrayList<>();
-                            for (TeaAttributesInfo attributesInfo : attributesInfos) {
-                                TeaAttributesInfoNationVo target = new TeaAttributesInfoNationVo();
-                                BeanUtils.copyProperties(attributesInfo, target);
-                                if(requestVo.getLang().equals("zh")){
-                                    target.setAttrName(attributesInfo.getCnAttrName());
-                                }else if (requestVo.getLang().equals("en")) {
-                                    target.setAttrName(attributesInfo.getUsAttrName());
-                                }
-                                nationVos.add(target);
-                            }
-                            goodsInfoVo.setGoodsAttrs(nationVos);
-                        }
                         goodsInfoVos.add(goodsInfoVo);
                     }
                     

@@ -14,6 +14,8 @@ public class TeaStoreInfoNationVo {
     private String storeAddress;
 
     private String storePicture;
+    
+    private String logo;
 
     private String storeIntroduction;
 
@@ -187,6 +189,14 @@ public class TeaStoreInfoNationVo {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public String getLogo() {
+        return logo;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
     }
     
 }
