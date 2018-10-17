@@ -124,7 +124,14 @@ public enum MilkTeaErrorConstant {
     CN_CLASS_NAME_EXISTS("00057", "分类名称（中文）已存在", "Class name already exists"),
     
     US_CLASS_NAME_EXISTS("00058", "分类名称（英文）已存在", "Class name already exists"),
-    
+
+    STANDARD_NAME_REQUIRD("00058","规格名称不能为空",""),
+
+    STANDARD_NAME_EXISTS("00059","规格名称已存在",""),
+
+    STANDARD_ID_REQUIRED("00060","规格名称不能为空",""),
+
+
     UNKNOW_EXCEPTION("10000", "程序内部异常" , "Something wrong with program");
     
     final String errorCode;
