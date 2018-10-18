@@ -42,21 +42,14 @@ public class GoodsClassServiceImpl implements GoodsClassService {
             throw new MilkTeaException(MilkTeaErrorConstant.CN_CLASS_NAME_REQUIRED);
         }
         
-        if(StringUtils.isBlank(classInfo.getUsClassName())){
-            throw new MilkTeaException(MilkTeaErrorConstant.US_CLASS_NAME_REQUIRED);
-        }
-        
+
         if(StringUtils.isBlank(classInfo.getCnClassLogo())){
             throw new MilkTeaException(MilkTeaErrorConstant.CN_CLASS_LOGO_REQUIRED);
         }
         
-        if(StringUtils.isBlank(classInfo.getUsClassLogo())){
-            throw new MilkTeaException(MilkTeaErrorConstant.US_CLASS_LOGO_REQUIRED);
-        }
+
         
-        if(StringUtils.isBlank(classInfo.getClassType())){
-            throw new MilkTeaException(MilkTeaErrorConstant.CLASS_TYPE_REQUIRED);
-        }
+
         
         if(classInfo.getIndexNo() == null){
             throw new MilkTeaException(MilkTeaErrorConstant.INDEX_NO_REQUIRED);
@@ -84,17 +77,7 @@ public class GoodsClassServiceImpl implements GoodsClassService {
         if(count > 0){
             throw new MilkTeaException(MilkTeaErrorConstant.CN_CLASS_NAME_EXISTS);
         }
-        
-        try {
-            count = this.classInfoMapper.countByUsName(classInfo.getUsClassName());
-        } catch (Exception e) {
-            logger.error(MilkTeaErrorConstant.DATABASE_ACCESS_FAILURE.getCnErrorMsg(), e);
-            throw new MilkTeaException(MilkTeaErrorConstant.DATABASE_ACCESS_FAILURE, e);
-        }
-        
-        if(count > 0){
-            throw new MilkTeaException(MilkTeaErrorConstant.US_CLASS_NAME_EXISTS);
-        }
+
         
         try {
             classInfo.setClassId(this.classInfoMapper.generateClassId());
@@ -137,22 +120,14 @@ public class GoodsClassServiceImpl implements GoodsClassService {
             throw new MilkTeaException(MilkTeaErrorConstant.CN_CLASS_NAME_REQUIRED);
         }
         
-        if(StringUtils.isBlank(classInfo.getUsClassName())){
-            throw new MilkTeaException(MilkTeaErrorConstant.US_CLASS_NAME_REQUIRED);
-        }
+
         
         if(StringUtils.isBlank(classInfo.getCnClassLogo())){
             throw new MilkTeaException(MilkTeaErrorConstant.CN_CLASS_LOGO_REQUIRED);
         }
+
         
-        if(StringUtils.isBlank(classInfo.getUsClassLogo())){
-            throw new MilkTeaException(MilkTeaErrorConstant.US_CLASS_LOGO_REQUIRED);
-        }
-        
-        if(StringUtils.isBlank(classInfo.getClassType())){
-            throw new MilkTeaException(MilkTeaErrorConstant.CLASS_TYPE_REQUIRED);
-        }
-        
+
         Long count = null;
         
         try {
@@ -166,17 +141,8 @@ public class GoodsClassServiceImpl implements GoodsClassService {
         if(count > 0){
             throw new MilkTeaException(MilkTeaErrorConstant.CN_CLASS_NAME_EXISTS);
         }
-        
-        try {
-            count = this.classInfoMapper.countOtherByUsName(classInfo.getClassId(),classInfo.getUsClassName());
-        } catch (Exception e) {
-            logger.error(MilkTeaErrorConstant.DATABASE_ACCESS_FAILURE.getCnErrorMsg(), e);
-            throw new MilkTeaException(MilkTeaErrorConstant.DATABASE_ACCESS_FAILURE, e);
-        }
-        
-        if(count > 0){
-            throw new MilkTeaException(MilkTeaErrorConstant.US_CLASS_NAME_EXISTS);
-        }
+
+
         
         try {
             this.classInfoMapper.updateByPrimaryKey(classInfo);
