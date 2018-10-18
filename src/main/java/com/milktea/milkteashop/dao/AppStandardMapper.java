@@ -1,14 +1,11 @@
 package com.milktea.milkteashop.dao;
 
 import com.milktea.milkteashop.domain.AppStandard;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Mapper
 public interface AppStandardMapper {
     int deleteByPrimaryKey(String id);
 
@@ -35,15 +32,15 @@ public interface AppStandardMapper {
     List<AppStandard> selectByName(String name);
 
     /**
-     * 根据id更新规格删除状态 0->1
-     * @param id
+     * 根据商品id更新删除状态 0->1
+     * @param goodsId 商品id
      * @return
      */
-    @Update("update APP_STANDARD set DELETE_FLAG=1 where id=#{1}")
-    int updateStatusById(String id);
+    @Update("update APP_STANDARD set DELETE_FLAG=1 where GOOD_ID=#{0}")
+    int deleteByGoodsId(String goodsId);
 
     /**
-     * 根据商品名称查询规格列表
+     * 根据商品id查询规格列表
      * @param goodsId
      * @return
      */

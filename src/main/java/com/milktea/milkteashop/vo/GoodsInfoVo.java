@@ -3,6 +3,7 @@ package com.milktea.milkteashop.vo;
 import java.math.BigDecimal;
 import java.util.List;
 
+import com.milktea.milkteashop.domain.AppStandard;
 import com.milktea.milkteashop.domain.TeaAttributesInfo;
 import com.milktea.milkteashop.domain.TeaClassInfo;
 
@@ -79,9 +80,9 @@ public class GoodsInfoVo {
     private BigDecimal goodsStock;
 
     /**
-     * 商品属性
+     * 商品规格
      */
-    private List<TeaAttributesInfo> goodsAttrs;
+    private List<AppStandard> standardList;
     
     /**
      * 商品分类
@@ -192,12 +193,12 @@ public class GoodsInfoVo {
         this.goodsStock = goodsStock;
     }
 
-    public List<TeaAttributesInfo> getGoodsAttrs() {
-        return goodsAttrs;
+    public List<AppStandard> getStandardList() {
+        return standardList;
     }
 
-    public void setGoodsAttrs(List<TeaAttributesInfo> goodsAttrs) {
-        this.goodsAttrs = goodsAttrs;
+    public void setStandardList(List<AppStandard> standardList) {
+        this.standardList = standardList;
     }
 
     public List<TeaClassInfo> getClassInfos() {
@@ -207,5 +208,6 @@ public class GoodsInfoVo {
     public void setClassInfos(List<TeaClassInfo> classInfos) {
         this.classInfos = classInfos;
     }
+
 
 }

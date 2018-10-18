@@ -31,7 +31,7 @@ public enum MilkTeaErrorConstant {
     
     ATTR_TYPE_REQUIRED("00011", "商品属性类型不能为空", "Attribute type required"),
     
-    ATTR_ID_REQUIRED("00012", "商品属性ID不能为空", "Attribute id required"),
+    ATTR_ID_REQUIRED("00012", "商品规格ID不能为空", "Attribute id required"),
     
     CN_GOODS_NAME_REQUIRED("00013", "商品名称（中文）不能为空", "Goods name required"),
     
@@ -131,6 +131,7 @@ public enum MilkTeaErrorConstant {
 
     STANDARD_ID_REQUIRED("00060","规格名称不能为空",""),
 
+    STANDARD_SHOWFLAG_REQUIRED("00061","商品规格必须有一个设为显示规格",""),
 
     UNKNOW_EXCEPTION("10000", "程序内部异常" , "Something wrong with program");
     

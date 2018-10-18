@@ -28,10 +28,12 @@ public class AppStandardServiceImpl implements AppStandardService {
     @Override
     public int addStanard(AppStandard appStandard) throws MilkTeaException{
         String standardName=appStandard.getName();
-
+         //name不能为空
         if (StringUtils.isBlank(standardName)){
             throw new MilkTeaException(MilkTeaErrorConstant.STANDARD_NAME_REQUIRD);
         }
+
+        //name不能重复
         List<AppStandard> list=standardMapper.selectByName(standardName);
         if (list.size()>0){
            throw new MilkTeaException(MilkTeaErrorConstant.STANDARD_NAME_EXISTS);
@@ -49,19 +51,19 @@ public class AppStandardServiceImpl implements AppStandardService {
      * 删除规格
      * @param id
      * @return
-     */
+     *//*
     @Override
     public int deleteStandard(String id) {
 
         int result=standardMapper.updateStatusById(id);
         return result;
-    }
+    }*/
 
-    /**
+  /*  *//**
      * 更新规格
      * @param appStandard
      * @return
-     */
+     *//*
     @Override
     public int updataStandard(AppStandard appStandard) throws MilkTeaException{
         String standardName=appStandard.getName();
@@ -81,7 +83,7 @@ public class AppStandardServiceImpl implements AppStandardService {
         appStandard.setUpdatedTime(new Date());
         return  standardMapper.updateByPrimaryKeySelective(appStandard);
 
-    }
+    }*/
 
     /**
      * 根据id查询规格

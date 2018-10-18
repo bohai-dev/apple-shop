@@ -19,8 +19,10 @@ public class AppStandard {
     private Date createdTime;
 
     private Date updatedTime;
-    //删除标志，默认0
+    //删除flag 0不删除，1删除
     private String deleteFlag;
+    //显示flag 0不显示，1显示
+    private String showFlag;
 
     public String getId() {
         return id;
@@ -92,5 +94,13 @@ public class AppStandard {
 
     public void setDeleteFlag(String deleteFlag) {
         this.deleteFlag = deleteFlag == null ? null : deleteFlag.trim();
+    }
+
+    public String getShowFlag() {
+        return showFlag;
+    }
+
+    public void setShowFlag(String showFlag) {
+        this.showFlag = showFlag == null ? null : showFlag.trim();
     }
 }

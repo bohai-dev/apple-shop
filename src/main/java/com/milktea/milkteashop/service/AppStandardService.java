@@ -12,9 +12,8 @@ public interface AppStandardService {
 
      int addStanard(AppStandard appStandard) throws MilkTeaException;
 
-     int deleteStandard(String id);
 
-     int updataStandard(AppStandard appStandard) throws MilkTeaException;
+     //int updataStandard(AppStandard appStandard) throws MilkTeaException;
 
      AppStandard selectById(String id);
 
