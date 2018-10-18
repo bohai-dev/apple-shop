@@ -1,5 +1,9 @@
 package com.milktea.milkteashop.dao;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Select;
+
 import com.milktea.milkteashop.domain.AppGovernment;
 
 public interface AppGovernmentMapper {
@@ -14,4 +18,7 @@ public interface AppGovernmentMapper {
     int updateByPrimaryKeySelective(AppGovernment record);
 
     int updateByPrimaryKey(AppGovernment record);
+    
+    @Select(value="select * from APP_GOVERMENT")
+    List<AppGovernment> selectAll();
 }
