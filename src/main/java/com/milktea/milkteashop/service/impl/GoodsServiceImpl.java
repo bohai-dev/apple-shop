@@ -172,11 +172,7 @@ public class GoodsServiceImpl implements GoodsService {
         if(StringUtils.isBlank(infoVo.getCnGoodsName())){
             throw new MilkTeaException(MilkTeaErrorConstant.CN_GOODS_NAME_REQUIRED);
         }
-        
-        if(StringUtils.isBlank(infoVo.getUsGoodsName())){
-            throw new MilkTeaException(MilkTeaErrorConstant.US_GOODS_NAME_REQUIRED);
-        }
-        
+
         if(infoVo.getClassInfos() == null){
             throw new MilkTeaException(MilkTeaErrorConstant.GOODS_CLASS_REQUIRED);
         }
@@ -203,17 +199,7 @@ public class GoodsServiceImpl implements GoodsService {
             throw new MilkTeaException(MilkTeaErrorConstant.CN_GOODS_NAME_EXISTS);
         }
         
-        try {
-            count = this.goodsInfoMapper.countOthersByUsName(dest.getGoodsId(), dest.getUsGoodsName(),infoVo.getStoreNo());
-            
-        } catch (Exception e) {
-            logger.error(MilkTeaErrorConstant.DATABASE_ACCESS_FAILURE.getCnErrorMsg(), e);
-            throw new MilkTeaException(MilkTeaErrorConstant.DATABASE_ACCESS_FAILURE, e);
-        }
-        
-        if(count > 0){
-            throw new MilkTeaException(MilkTeaErrorConstant.US_GOODS_NAME_EXISTS);
-        }
+
         
         //先修改商品主信息
         try {

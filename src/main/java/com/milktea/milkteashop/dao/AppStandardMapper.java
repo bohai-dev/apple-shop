@@ -1,11 +1,13 @@
 package com.milktea.milkteashop.dao;
 
 import com.milktea.milkteashop.domain.AppStandard;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
+@Mapper
 public interface AppStandardMapper {
     int deleteByPrimaryKey(String id);
 
