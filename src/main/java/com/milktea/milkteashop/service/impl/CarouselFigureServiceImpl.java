@@ -36,7 +36,7 @@ public class CarouselFigureServiceImpl implements CarouselFigureService {
             throw new MilkTeaException(MilkTeaErrorConstant.CN_FIGURE_ADDRESS_REQUIRED);
         }
         
-      /*  if(StringUtils.isBlank(figure.getUsFigureAddress())){
+        /* if(StringUtils.isBlank(figure.getUsFigureAddress())){
             throw new MilkTeaException(MilkTeaErrorConstant.US_FIGURE_ADDRESS_REQUIRED);
         }*/
         
