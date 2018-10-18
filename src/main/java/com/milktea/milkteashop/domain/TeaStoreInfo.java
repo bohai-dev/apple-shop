@@ -52,6 +52,16 @@ public class TeaStoreInfo {
     private String deleteFlag;
 
     private Date updateTime;
+    
+    private String logo;
+    
+    public String getLogo() {
+        return logo;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
+    }
 
     public String getStoreNo() {
         return storeNo;

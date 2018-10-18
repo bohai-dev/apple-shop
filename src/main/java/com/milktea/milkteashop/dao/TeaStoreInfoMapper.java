@@ -23,7 +23,7 @@ public interface TeaStoreInfoMapper {
 
     int updateByPrimaryKey(TeaStoreInfo record);
     
-    @Select(value="select * from TEA_STORE_INFO")
+    @Select(value="select * from TEA_STORE_INFO  order by UPDATE_TIME")
     List<TeaStoreInfo> selectAll();
     
     List<TeaStoreInfo> selectByCondition(TeaStoreInfo storeInfo);
@@ -57,6 +57,6 @@ public interface TeaStoreInfoMapper {
     //根据分类查询店铺
     @Select(value="select * from TEA_STORE_INFO t "
             + "where exists (select 1 from TEA_GOODS_INFO t1 where t.STORE_NO = t1.STORE_NO and t1.DELETE_FLAG = '0' "
-            + "and exists (select 1 from TEA_GOODS_CLASS t2 where t2.GOODS_ID = t1.GOODS_ID and t2.CLASS_ID = #{classId}))")
+            + "and exists (select 1 from TEA_GOODS_CLASS t2 where t2.GOODS_ID = t1.GOODS_ID and t2.CLASS_ID = #{classId})) order by t.UPDATE_TIME")
     List<TeaStoreInfo> selectByClass(@Param("classId")String classId);
 }

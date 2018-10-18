@@ -1,16 +1,18 @@
 package com.milktea.milkteashop.job;
 
+import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.milktea.milkteashop.dao.TeaStoreInfoMapper;
+import com.milktea.milkteashop.domain.TeaStoreInfo;
 import com.milktea.milkteashop.exception.MilkTeaException;
 import com.milktea.milkteashop.service.OrderService;
 import com.milktea.milkteashop.vo.OrderNationVo;
@@ -22,6 +24,9 @@ public class ScheduledService {
     
     @Autowired
     private OrderService orderService;
+    
+    @Autowired
+    private TeaStoreInfoMapper storeInfoMapper;
     
     @Autowired
     WebsocketHandler websocketHandler;
@@ -50,6 +55,19 @@ public class ScheduledService {
             websocketHandler.sendMessage(orderNationVo.getStoreNo(), JSON.toJSONString(orderNationVo,SerializerFeature.WriteMapNullValue));
         }
         log.info("=====>>>>>使用cron  {}{}",System.currentTimeMillis(),"每隔一分钟执行");
+    }
+    
+    @Scheduled(cron = "0 0 0 0/1 * *")
+    public void storeOrder(){
+        
+        List<TeaStoreInfo> list = this.storeInfoMapper.selectAll();
+        if(list != null && list.size() >0){
+            TeaStoreInfo info = list.get(0);
+            info.setUpdateTime(new Date());
+            this.storeInfoMapper.updateByPrimaryKey(info);
+        }
+        
+        log.info("=====>>>>>使用cron  {}{}",System.currentTimeMillis(),"每天执行");
     }
     
     /*@Scheduled(fixedRate = 5000)

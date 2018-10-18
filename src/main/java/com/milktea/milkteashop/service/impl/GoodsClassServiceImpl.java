@@ -224,7 +224,5 @@ public class GoodsClassServiceImpl implements GoodsClassService {
         
         return classStores;
     }
-    
-    
 
 }
