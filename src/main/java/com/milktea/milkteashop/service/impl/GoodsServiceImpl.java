@@ -85,7 +85,7 @@ public class GoodsServiceImpl implements GoodsService {
         if(info != null){
             throw new MilkTeaException(MilkTeaErrorConstant.CN_GOODS_NAME_EXISTS);
         }
-        
+
         
         TeaGoodsInfo dest = new TeaGoodsInfo();
         try {
@@ -443,7 +443,8 @@ public class GoodsServiceImpl implements GoodsService {
         
         List<TeaClassInfo> classInfos = null;
         TeaClassInfo classInfo = new TeaClassInfo();
-        classInfo.setClassType(requestVo.getClassType());
+        //没有分类类型
+        //classInfo.setClassType(requestVo.getClassType());
         try {
             classInfos = this.classInfoMapper.selectByCondition(classInfo);
         } catch (Exception e) {
@@ -629,7 +630,8 @@ public class GoodsServiceImpl implements GoodsService {
         
         List<TeaClassInfo> classInfos = null;
         TeaClassInfo classInfo = new TeaClassInfo();
-        classInfo.setClassType(requestVo.getClassType());
+        //不需要类型
+        //classInfo.setClassType(requestVo.getClassType());
         try {
             classInfos = this.classInfoMapper.selectByCondition(classInfo);
         } catch (Exception e) {
@@ -653,7 +655,9 @@ public class GoodsServiceImpl implements GoodsService {
                 classInfoVo.setClassName(teaClassInfo.getCnClassName());
                 classInfoVo.setClassLogo(teaClassInfo.getCnClassLogo());
 
-                
+
+
+
                 //根据商品分类查询商品信息
                 List<TeaGoodsInfo> goodsList = null;
                 TeaGoodsInfo goodsInfo = new TeaGoodsInfo();
@@ -661,6 +665,7 @@ public class GoodsServiceImpl implements GoodsService {
                 goodsInfo.setClassId(teaClassInfo.getClassId());
                 //只查询在售商品
                 goodsInfo.setGoodsStatus("1");
+
                 try {
                     goodsList = this.goodsInfoMapper.selectByCondition(goodsInfo);
                 } catch (Exception e) {
@@ -720,7 +725,7 @@ public class GoodsServiceImpl implements GoodsService {
                 }
 
 
-                
+
                 classInfoVo.setGoods(goodsInfoVos);
                 list.add(classInfoVo);
             }

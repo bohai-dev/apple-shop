@@ -1,18 +1,24 @@
 package com.milktea.milkteashop.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.milktea.milkteashop.dao.TeaClassInfoMapper;
+import com.milktea.milkteashop.dao.TeaStoreInfoMapper;
 import com.milktea.milkteashop.domain.TeaClassInfo;
+import com.milktea.milkteashop.domain.TeaStoreInfo;
 import com.milktea.milkteashop.exception.MilkTeaErrorConstant;
 import com.milktea.milkteashop.exception.MilkTeaException;
 import com.milktea.milkteashop.service.GoodsClassService;
+import com.milktea.milkteashop.vo.ClassStoreVo;
+import com.milktea.milkteashop.vo.TeaStoreInfoNationVo;
 
 @Service("goodsClassService")
 public class GoodsClassServiceImpl implements GoodsClassService {
@@ -21,6 +27,9 @@ public class GoodsClassServiceImpl implements GoodsClassService {
     
     @Autowired
     private TeaClassInfoMapper classInfoMapper;
+    
+    @Autowired
+    private TeaStoreInfoMapper storeInfoMapper;
 
     @Override
     public void addClass(TeaClassInfo classInfo) throws MilkTeaException {
@@ -203,5 +212,53 @@ public class GoodsClassServiceImpl implements GoodsClassService {
         }
         return classInfo;
     }
+
+    @Override
+    public List<ClassStoreVo> queryClassStore() throws MilkTeaException {
+        
+        List<ClassStoreVo> classStores = new ArrayList<>();
+        
+        List<TeaClassInfo> list = null;
+        try {
+            list = this.classInfoMapper.selectAll();
+        } catch (Exception e) {
+            logger.error(MilkTeaErrorConstant.DATABASE_ACCESS_FAILURE.getCnErrorMsg(), e);
+            throw new MilkTeaException(MilkTeaErrorConstant.DATABASE_ACCESS_FAILURE, e);
+        }
+        
+        for (TeaClassInfo teaClassInfo : list) {
+            ClassStoreVo classStoreVo = new ClassStoreVo();
+            classStoreVo.setClassId(teaClassInfo.getClassId());
+            classStoreVo.setClassName(teaClassInfo.getCnClassName());
+            classStoreVo.setClassLogo(teaClassInfo.getCnClassLogo());
+            classStoreVo.setDeleteFlag(teaClassInfo.getDeleteFlag());
+            classStoreVo.setIndexNo(teaClassInfo.getIndexNo());
+            classStoreVo.setUpdateTime(teaClassInfo.getUpdateTime());
+            
+            //查询店铺
+            List<TeaStoreInfo> stores = this.storeInfoMapper.selectByClass(teaClassInfo.getClassId());
+            
+            List<TeaStoreInfoNationVo> nationVos = new ArrayList<>();
+            for (TeaStoreInfo teaStoreInfo : stores) {
+                TeaStoreInfoNationVo target = new TeaStoreInfoNationVo();
+                BeanUtils.copyProperties(teaStoreInfo, target);
+                target.setStoreName(teaStoreInfo.getCnStoreName());
+                target.setStoreCity(teaStoreInfo.getCnStoreCity());
+                target.setStoreAddress(teaStoreInfo.getCnStoreAddress());
+                target.setStoreIntroduction(teaStoreInfo.getCnStoreIntroduction());
+                target.setStorePicture(teaStoreInfo.getCnStorePicture());
+                //LOGO放这个字段
+                target.setLogo(teaStoreInfo.getUsStorePicture());
+                nationVos.add(target);
+            }
+            
+            classStoreVo.setStores(nationVos);
+            classStores.add(classStoreVo);
+        }
+        
+        return classStores;
+    }
+    
+    
 
 }

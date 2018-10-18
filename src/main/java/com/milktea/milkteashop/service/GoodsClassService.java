@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.milktea.milkteashop.domain.TeaClassInfo;
 import com.milktea.milkteashop.exception.MilkTeaException;
+import com.milktea.milkteashop.vo.ClassStoreVo;
 
 /**
  * 商品分类接口
@@ -47,5 +48,12 @@ public interface GoodsClassService {
      * @throws MilkTeaException
      */
     public TeaClassInfo queryClassInfo(String classId) throws MilkTeaException;
+    
+    /**
+     * 查询分类商店
+     * @return
+     * @throws MilkTeaException
+     */
+    public List<ClassStoreVo> queryClassStore() throws MilkTeaException;
 
 }

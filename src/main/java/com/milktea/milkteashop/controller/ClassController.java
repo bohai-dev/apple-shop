@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.milktea.milkteashop.domain.TeaClassInfo;
 import com.milktea.milkteashop.exception.MilkTeaException;
 import com.milktea.milkteashop.service.GoodsClassService;
+import com.milktea.milkteashop.vo.ClassStoreVo;
 import com.milktea.milkteashop.vo.ResponseBody;
 import com.milktea.milkteashop.vo.ResponseHeader;
 
@@ -55,6 +56,18 @@ public class ClassController {
     public ResponseBody<TeaClassInfo> queryClassInfo(@PathVariable String classId) throws MilkTeaException{
         ResponseBody<TeaClassInfo> responseBody = new ResponseBody<>();
         responseBody.setData(this.classService.queryClassInfo(classId));
+        return responseBody;
+    }
+    
+    /**
+     * 查询分类商店
+     * @return
+     * @throws MilkTeaException
+     */
+    @RequestMapping(value="queryClassStore", method=RequestMethod.GET)
+    public ResponseBody<List<ClassStoreVo>> queryClassStore() throws MilkTeaException {
+        ResponseBody<List<ClassStoreVo>> responseBody = new ResponseBody<>();
+        responseBody.setData(this.classService.queryClassStore());
         return responseBody;
     }
 }
