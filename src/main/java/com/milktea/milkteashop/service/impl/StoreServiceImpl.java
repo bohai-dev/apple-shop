@@ -221,23 +221,14 @@ public class StoreServiceImpl implements StoreService {
             for (TeaStoreInfo teaStoreInfo : stores) {
                 TeaStoreInfoNationVo target = new TeaStoreInfoNationVo();
                 BeanUtils.copyProperties(teaStoreInfo, target);
-                if(lang.equals("zh")){
-                    target.setStoreName(teaStoreInfo.getCnStoreName());
-                    target.setStoreCity(teaStoreInfo.getCnStoreCity());
-                    target.setStoreAddress(teaStoreInfo.getCnStoreAddress());
-                    target.setStoreIntroduction(teaStoreInfo.getCnStoreIntroduction());
-                    target.setStorePicture(teaStoreInfo.getCnStorePicture());
-                }else if (lang.equals("en")) {
-                    target.setStoreName(teaStoreInfo.getUsStoreName());
-                    target.setStoreCity(teaStoreInfo.getUsStoreCity());
-                    target.setStoreAddress(teaStoreInfo.getUsStoreAddress());
-                    target.setStoreIntroduction(teaStoreInfo.getUsStoreIntroduction());
-                    target.setStorePicture(teaStoreInfo.getUsStorePicture());
-                }
+                target.setStoreName(teaStoreInfo.getCnStoreName());
+                target.setStoreCity(teaStoreInfo.getCnStoreCity());
+                target.setStoreAddress(teaStoreInfo.getCnStoreAddress());
+                target.setStoreIntroduction(teaStoreInfo.getCnStoreIntroduction());
+                target.setStorePicture(teaStoreInfo.getCnStorePicture());
                 vos.add(target);
             }
         }
-        
         
         return vos;
     }
