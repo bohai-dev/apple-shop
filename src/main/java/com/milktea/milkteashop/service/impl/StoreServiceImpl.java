@@ -177,6 +177,7 @@ public class StoreServiceImpl implements StoreService {
             throw new MilkTeaException(MilkTeaErrorConstant.STORE_USER_NAME_EXISTS);
         }
         
+        storeInfo.setUsStorePicture(storeInfo.getLogo());
         try {
             this.storeInfoMapper.updateByPrimaryKey(storeInfo);
         } catch (Exception e) {

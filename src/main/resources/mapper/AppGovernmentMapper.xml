@@ -99,7 +99,6 @@
     set TITLE = #{title,jdbcType=VARCHAR},
       PICTURE = #{picture,jdbcType=VARCHAR},
       CONTEXT = #{context,jdbcType=VARCHAR},
-      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
       UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP}
     where ID = #{id,jdbcType=VARCHAR}
   </update>

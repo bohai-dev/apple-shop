@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.milktea.milkteashop.domain.AppGovernment;
 import com.milktea.milkteashop.domain.TeaCarouselFigure;
 import com.milktea.milkteashop.domain.TeaContact;
 import com.milktea.milkteashop.vo.DeductGoodsStockRequestVo;
@@ -21,16 +22,14 @@ public class JsonGenerate {
     
     public static void main(String[] args) {
         
+        PageResponseVo<AppGovernment> pageResponseVo = new PageResponseVo<>();
         
-        ResponseBody<List<TeaContact>> requestVo = new ResponseBody<>();
-        List<TeaContact> list = new ArrayList<>();
-        TeaContact contact = new TeaContact();
-        list.add(contact);
-        //TeaCarouselFigure responseBody = new TeaCarouselFigure();
-        requestVo.setData(list);
-        
-        TeaContact nationVo = new TeaContact();
-        System.out.println(JSON.toJSONString(requestVo,SerializerFeature.WriteMapNullValue));
+        AppGovernment requestVo = new AppGovernment();
+        List<AppGovernment> l = new ArrayList<AppGovernment>();
+        l.add(requestVo);
+        pageResponseVo.setRows(l);
+        PageRequestVo vo = new PageRequestVo<>();
+        System.out.println(JSON.toJSONString(vo,SerializerFeature.WriteMapNullValue));
     }
 
 }

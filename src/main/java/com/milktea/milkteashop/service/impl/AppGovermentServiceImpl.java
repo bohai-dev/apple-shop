@@ -67,7 +67,8 @@ public class AppGovermentServiceImpl implements AppGovermentService {
         if(StringUtils.isBlank(appGovernment.getTitle())){
             
         }
-        
+        //更新时间
+        appGovernment.setUpdateTime(new Date());
         try {
             this.governmentMapper.updateByPrimaryKey(appGovernment);
         } catch (Exception e) {
@@ -97,6 +98,17 @@ public class AppGovermentServiceImpl implements AppGovermentService {
     @Override
     public PageResponseVo<AppGovernment> query(PageRequestVo pageRequestVo) throws MilkTeaException {
         
+        if(pageRequestVo == null){
+            throw new MilkTeaException(MilkTeaErrorConstant.PARAMETER_REQUIRED);
+        }
+        
+        if(pageRequestVo.getPageNumber() == null){
+            throw new MilkTeaException(MilkTeaErrorConstant.PAGE_NUMBER_REQUIRED);
+        }
+
+        if(pageRequestVo.getPageSize() == null){
+            throw new MilkTeaException(MilkTeaErrorConstant.PAGE_SIZE_REQUIRED);
+        }
         PageResponseVo<AppGovernment> pageResponseVo = new PageResponseVo<>();
         try {
             PageHelper.startPage(pageRequestVo.getPageNumber(), pageRequestVo.getPageSize());
@@ -104,6 +116,7 @@ public class AppGovermentServiceImpl implements AppGovermentService {
             
             Page<AppGovernment> page = (Page<AppGovernment>)list;
             pageResponseVo.setTotal(page.getTotal());
+            pageResponseVo.setRows(list);
             page.close();
         } catch (Exception e) {
             logger.error("查询政府信息失败",e);
