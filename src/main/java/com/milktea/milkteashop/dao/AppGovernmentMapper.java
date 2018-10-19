@@ -2,10 +2,12 @@ package com.milktea.milkteashop.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import com.milktea.milkteashop.domain.AppGovernment;
 
+@Mapper
 public interface AppGovernmentMapper {
     int deleteByPrimaryKey(String id);
 
