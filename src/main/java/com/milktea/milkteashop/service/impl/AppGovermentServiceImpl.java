@@ -67,7 +67,8 @@ public class AppGovermentServiceImpl implements AppGovermentService {
         if(StringUtils.isBlank(appGovernment.getTitle())){
             
         }
-        
+        //更新时间
+        appGovernment.setUpdateTime(new Date());
         try {
             this.governmentMapper.updateByPrimaryKey(appGovernment);
         } catch (Exception e) {
