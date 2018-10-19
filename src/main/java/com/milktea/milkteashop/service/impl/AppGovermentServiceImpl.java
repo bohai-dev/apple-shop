@@ -115,6 +115,7 @@ public class AppGovermentServiceImpl implements AppGovermentService {
             
             Page<AppGovernment> page = (Page<AppGovernment>)list;
             pageResponseVo.setTotal(page.getTotal());
+            pageResponseVo.setRows(list);
             page.close();
         } catch (Exception e) {
             logger.error("查询政府信息失败",e);
