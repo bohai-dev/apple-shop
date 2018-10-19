@@ -299,8 +299,8 @@
       IS_SEND = #{isSend,jdbcType=CHAR},
       RESERVE_BEGIN_TIME = #{reserveBeginTime,jdbcType=VARCHAR},
       RESERVE_END_TIME = #{reserveEndTime,jdbcType=VARCHAR},
-      DELETE_FLAG = #{deleteFlag,jdbcType=CHAR},
-      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP}
+      DELETE_FLAG = #{deleteFlag,jdbcType=CHAR}<!-- ,
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP} -->
     where STORE_NO = #{storeNo,jdbcType=VARCHAR}
   </update>
   
