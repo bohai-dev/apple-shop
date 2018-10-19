@@ -97,6 +97,17 @@ public class AppGovermentServiceImpl implements AppGovermentService {
     @Override
     public PageResponseVo<AppGovernment> query(PageRequestVo pageRequestVo) throws MilkTeaException {
         
+        if(pageRequestVo == null){
+            throw new MilkTeaException(MilkTeaErrorConstant.PARAMETER_REQUIRED);
+        }
+        
+        if(pageRequestVo.getPageNumber() == null){
+            throw new MilkTeaException(MilkTeaErrorConstant.PAGE_NUMBER_REQUIRED);
+        }
+
+        if(pageRequestVo.getPageSize() == null){
+            throw new MilkTeaException(MilkTeaErrorConstant.PAGE_SIZE_REQUIRED);
+        }
         PageResponseVo<AppGovernment> pageResponseVo = new PageResponseVo<>();
         try {
             PageHelper.startPage(pageRequestVo.getPageNumber(), pageRequestVo.getPageSize());
