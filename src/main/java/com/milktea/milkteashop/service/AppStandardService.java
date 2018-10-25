@@ -17,6 +17,6 @@ public interface AppStandardService {
 
      AppStandard selectById(String id);
 
-     List<AppStandard> selectByGoodsId(String id);
+   //  List<AppStandard> selectByGoodsId(String id);
 
 }

@@ -2,6 +2,7 @@ package com.milktea.milkteashop.dao;
 
 import com.milktea.milkteashop.domain.AppStandard;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -46,6 +47,6 @@ public interface AppStandardMapper {
      * @param goodsId
      * @return
      */
-    @Select("select * from APP_STANDARD where GOOD_ID=#{0}")
-    List<AppStandard> selectByGoodsId(String goodsId);
+    @Select("select * from APP_STANDARD where GOOD_ID=#{goodsId} and DELETE_Flag=#{status}")
+    List<AppStandard> selectByGoodsId(@Param("goodsId") String goodsId,@Param("status") String status);
 }

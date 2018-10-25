@@ -38,14 +38,14 @@ public class GoodsServiceImpl implements GoodsService {
     @Autowired
     private TeaGoodsClassMapper goodsClassMapper;
     
-    @Autowired
-    private TeaGoodsAttrMapper goodsAttrMapper;
+    //@Autowired
+    //private TeaGoodsAttrMapper goodsAttrMapper;
     
     @Autowired
     private TeaClassInfoMapper classInfoMapper;
     
-    @Autowired
-    private TeaAttributesInfoMapper attributesInfoMapper;
+    //@Autowired
+    //private TeaAttributesInfoMapper attributesInfoMapper;
 
     @Autowired
     private AppStandardMapper appleStandMapper;
@@ -54,7 +54,7 @@ public class GoodsServiceImpl implements GoodsService {
     private AppStandardService standardService;
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor=MilkTeaException.class)
     public void addGoodsInfo(GoodsInfoVo infoVo) throws MilkTeaException {
         
         if(infoVo == null){
@@ -140,10 +140,24 @@ public class GoodsServiceImpl implements GoodsService {
             }
         }*/
 
-        //TODO:添加商品规格
+        //添加商品规格
+        List<String> nameList=new ArrayList<>();
         if (infoVo.getStandardList()!=null){
-
+            //检查是否设置了显示规格
+            long showCount=infoVo.getStandardList().stream().filter(standard->standard.getShowFlag().equals("1")).count();
+            if (showCount!=1){
+                throw new MilkTeaException(MilkTeaErrorConstant.STANDARD_SHOWFLAG_REQUIRED);
+            }
             for (AppStandard standard: infoVo.getStandardList()){
+                String standardName=standard.getName();
+                if (StringUtils.isBlank(standardName)){
+                    throw new MilkTeaException(MilkTeaErrorConstant.STANDARD_NAME_REQUIRD);
+                }
+                if (nameList.contains(standardName)){
+                    throw new MilkTeaException(MilkTeaErrorConstant.STANDARD_NAME_EXISTS);
+                }
+                nameList.add(standardName);
+
                 standard.setGoodId(goodsId);
                 standardService.addStanard(standard);
             }
@@ -154,7 +168,7 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor=MilkTeaException.class)
     public void modifyGoodsInfo(GoodsInfoVo infoVo) throws MilkTeaException {
         
         if(infoVo == null){
@@ -274,9 +288,23 @@ public class GoodsServiceImpl implements GoodsService {
 
             //重新添加商品规格
 
-            for (AppStandard standard: infoVo.getStandardList()){
-                standard.setGoodId(infoVo.getGoodsId());
-                standardService.addStanard(standard);
+            List<String> nameList=new ArrayList<>();
+            if (infoVo.getStandardList()!=null){
+
+                for (AppStandard standard: infoVo.getStandardList()){
+                    String standardName=standard.getName();
+                    if (StringUtils.isBlank(standardName)){
+                        throw new MilkTeaException(MilkTeaErrorConstant.STANDARD_NAME_REQUIRD);
+                    }
+                    if (nameList.contains(standardName)){
+                        throw new MilkTeaException(MilkTeaErrorConstant.STANDARD_NAME_EXISTS);
+                    }
+                    nameList.add(standardName);
+
+                    standard.setGoodId(infoVo.getGoodsId());
+                    standardService.addStanard(standard);
+                }
+
             }
 
         }
@@ -357,7 +385,7 @@ public class GoodsServiceImpl implements GoodsService {
                 vo.setGoodsAttrs(attributesInfos);*/
 
                 //查询商品规格
-                List<AppStandard> standardList=appleStandMapper.selectByGoodsId(goodsInfo.getGoodsId());
+                List<AppStandard> standardList=appleStandMapper.selectByGoodsId(goodsInfo.getGoodsId(),"0");
                 vo.setStandardList(standardList);
                 list.add(vo);
             }
@@ -407,7 +435,7 @@ public class GoodsServiceImpl implements GoodsService {
             }
             goodsInfoVo.setGoodsAttrs(attributesInfos);*/
             //查询商品规格
-            List<AppStandard> standardList=appleStandMapper.selectByGoodsId(goodsInfo.getGoodsId());
+            List<AppStandard> standardList=appleStandMapper.selectByGoodsId(goodsInfo.getGoodsId(),"0");
             goodsInfoVo.setStandardList(standardList);
         }
         
@@ -500,7 +528,7 @@ public class GoodsServiceImpl implements GoodsService {
                         logger.error(MilkTeaErrorConstant.UNKNOW_EXCEPTION.getCnErrorMsg(), e);
                         throw new MilkTeaException(MilkTeaErrorConstant.UNKNOW_EXCEPTION, e);
                     }
-                    List<AppStandard> standardList=appleStandMapper.selectByGoodsId(info.getGoodsId());
+                    List<AppStandard> standardList=appleStandMapper.selectByGoodsId(info.getGoodsId(),"0");
                     goodsInfoVo.setStandardList(standardList);
                     goodsInfoVos.add(goodsInfoVo);
                 }
@@ -700,9 +728,9 @@ public class GoodsServiceImpl implements GoodsService {
                             goodsInfoVo.setGoodsAttrs(nationVos);
                         }*/
 
-                        //设置商品规格
 
-                        List<AppStandard> standardList=appleStandMapper.selectByGoodsId(info.getGoodsId());
+                        //设置商品规格
+                        List<AppStandard> standardList=appleStandMapper.selectByGoodsId(info.getGoodsId(),"0");
                         goodsInfoVo.setGoodsStandardList(standardList);
 
                         goodsInfoVos.add(goodsInfoVo);

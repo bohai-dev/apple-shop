@@ -65,7 +65,7 @@ public class StoreServiceImpl implements StoreService {
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor=MilkTeaException.class)
     public void addStoreInfo(TeaStoreInfo storeInfo) throws MilkTeaException {
 
         if(storeInfo == null){
@@ -132,7 +132,7 @@ public class StoreServiceImpl implements StoreService {
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor=MilkTeaException.class)
     public void modifyStoreInfo(TeaStoreInfo storeInfo) throws MilkTeaException {
         
         

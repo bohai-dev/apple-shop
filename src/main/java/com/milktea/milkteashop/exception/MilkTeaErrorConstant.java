@@ -127,7 +127,7 @@ public enum MilkTeaErrorConstant {
 
     STANDARD_NAME_REQUIRD("00058","规格名称不能为空",""),
 
-    STANDARD_NAME_EXISTS("00059","规格名称已存在",""),
+    STANDARD_NAME_EXISTS("00059","规格名称不能重复",""),
 
     STANDARD_ID_REQUIRED("00060","规格名称不能为空",""),
 
