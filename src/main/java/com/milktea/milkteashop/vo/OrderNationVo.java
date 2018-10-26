@@ -34,6 +34,7 @@ public class OrderNationVo extends MessageType{
 
     private String storeNo;
 
+    //快递单号
     private String takeNo;
 
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")

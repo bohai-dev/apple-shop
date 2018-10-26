@@ -18,6 +18,11 @@ public class TeaOrderDetails {
     private BigDecimal orderPrice;
 
     private String updateTime;
+    //规格编号
+    private String standardId;
+    //规格数量
+    private BigDecimal standardNum;
+
 
     public String getOrderDetailId() {
         return orderDetailId;
@@ -81,5 +86,21 @@ public class TeaOrderDetails {
 
     public void setUpdateTime(String updateTime) {
         this.updateTime = updateTime == null ? null : updateTime.trim();
+    }
+
+    public String getStandardId() {
+        return standardId;
+    }
+
+    public void setStandardId(String standardId) {
+        this.standardId = standardId;
+    }
+
+    public BigDecimal getStandardNum() {
+        return standardNum;
+    }
+
+    public void setStandardNum(BigDecimal standardNum) {
+        this.standardNum = standardNum;
     }
 }

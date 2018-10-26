@@ -15,13 +15,13 @@ public class QueryOrdersRequestVo {
     private String lang;
     
     private String storeNo;
-    
+    //活动id
     private String promotionId;
     
     //订单类型 0:预约 1:堂吃
     private String orderType;
     
-    //订单状态 0:已下单 1：制作完成 2:取货完成 3:外送 4:撤销
+    //订单状态 0下单成功，待发货 ；1已发货，待收货 ；2用户退货；3用户确认收货，本单完成；4系统确认收货（15天后由客服联系用户后在后台确认收货），本单完成; 5用户取消订单
     private String orderStatus;
     
     //支付状态 0:待支付 1:支付成功 2:支付失败

@@ -23,7 +23,13 @@ public class OrderDetailsNationVo {
     
     private String goodsPictureBig;
     
-    private List<TeaAttributesInfoNationVo> attrs;
+  //  private List<TeaAttributesInfoNationVo> attrs;
+
+    //规格名称
+    private String standardName;
+
+    //规格数量
+    private BigDecimal standardNum;
 
     public String getOrderDetailId() {
         return orderDetailId;
@@ -97,13 +103,27 @@ public class OrderDetailsNationVo {
         this.goodsPictureBig = goodsPictureBig;
     }
 
-    public List<TeaAttributesInfoNationVo> getAttrs() {
+   /* public List<TeaAttributesInfoNationVo> getAttrs() {
         return attrs;
     }
 
     public void setAttrs(List<TeaAttributesInfoNationVo> attrs) {
         this.attrs = attrs;
+    }*/
+
+    public String getStandardName() {
+        return standardName;
     }
-    
-    
+
+    public void setStandardName(String standardName) {
+        this.standardName = standardName;
+    }
+
+    public BigDecimal getStandardNum() {
+        return standardNum;
+    }
+
+    public void setStandardNum(BigDecimal standardNum) {
+        this.standardNum = standardNum;
+    }
 }

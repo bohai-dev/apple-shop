@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.milktea.milkteashop.dao.*;
+import com.milktea.milkteashop.domain.*;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,14 +15,6 @@ import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.milktea.milkteashop.dao.TeaAttributesInfoMapper;
-import com.milktea.milkteashop.dao.TeaGoodsInfoMapper;
-import com.milktea.milkteashop.dao.TeaOrderDetailsMapper;
-import com.milktea.milkteashop.dao.TeaOrderInfoMapper;
-import com.milktea.milkteashop.domain.TeaAttributesInfo;
-import com.milktea.milkteashop.domain.TeaGoodsInfo;
-import com.milktea.milkteashop.domain.TeaOrderDetails;
-import com.milktea.milkteashop.domain.TeaOrderInfo;
 import com.milktea.milkteashop.exception.MilkTeaErrorConstant;
 import com.milktea.milkteashop.exception.MilkTeaException;
 import com.milktea.milkteashop.service.OrderService;
@@ -49,7 +43,10 @@ public class OrderServiceImpl implements OrderService {
     
     @Autowired
     private TeaAttributesInfoMapper attributesInfoMapper;
-    
+
+    @Autowired
+    AppStandardMapper appStandardMapper;
+
     @Autowired
     WebsocketHandler websocketHandler;
 
@@ -134,7 +131,7 @@ public class OrderServiceImpl implements OrderService {
                         }
                         
                         //查询所购买商品的属性
-                        List<TeaAttributesInfoNationVo> attrsVos = null;
+                        /*List<TeaAttributesInfoNationVo> attrsVos = null;
                         List<TeaAttributesInfo> attributesInfos = null;
                         try {
                             attributesInfos = this.attributesInfoMapper.selectByOrderDetailId(details.getOrderDetailId());
@@ -157,7 +154,10 @@ public class OrderServiceImpl implements OrderService {
                             }
                         }
                         
-                        detailTarget.setAttrs(attrsVos);
+                        detailTarget.setAttrs(attrsVos);*/
+
+                        //TODO:设置商品规格
+
                         nationVos.add(detailTarget);
                     }
                     
@@ -232,7 +232,7 @@ public class OrderServiceImpl implements OrderService {
                         }
                     }
                     
-                    //查询所购买商品的属性
+                /*    //查询所购买商品的属性
                     List<TeaAttributesInfoNationVo> attrsVos = null;
                     List<TeaAttributesInfo> attributesInfos = null;
                     try {
@@ -256,7 +256,10 @@ public class OrderServiceImpl implements OrderService {
                         }
                     }
                     
-                    detailTarget.setAttrs(attrsVos);
+                    detailTarget.setAttrs(attrsVos);*/
+
+                    //TODO:设置商品规格
+
                     nationVos.add(detailTarget);
                 }
                 
@@ -332,8 +335,9 @@ public class OrderServiceImpl implements OrderService {
                             detailTarget.setGoodsName(goodsInfo.getCnGoodsName());
                             detailTarget.setGoodsPictureBig(goodsInfo.getCnGoodsPictureBig());
                         }
-                        
-                        //查询所购买商品的属性
+
+
+                     /*   //查询所购买商品的属性
                         List<TeaAttributesInfoNationVo> attrsVos = null;
                         List<TeaAttributesInfo> attributesInfos = null;
                         try {
@@ -353,7 +357,11 @@ public class OrderServiceImpl implements OrderService {
                             }
                         }
                         
-                        detailTarget.setAttrs(attrsVos);
+                        detailTarget.setAttrs(attrsVos);*/
+                        //设置商品规格
+                        String standardName=this.appStandardMapper.selectByPrimaryKey(details.getStandardId()).getName();
+                        detailTarget.setStandardName(standardName);
+
                         nationVos.add(detailTarget);
                     }
                     
@@ -423,7 +431,7 @@ public class OrderServiceImpl implements OrderService {
                             detailTarget.setGoodsPictureBig(goodsInfo.getCnGoodsPictureBig());
                         }
                         
-                        //查询所购买商品的属性
+                     /*   //查询所购买商品的属性
                         List<TeaAttributesInfoNationVo> attrsVos = null;
                         List<TeaAttributesInfo> attributesInfos = null;
                         try {
@@ -443,7 +451,9 @@ public class OrderServiceImpl implements OrderService {
                             }
                         }
                         
-                        detailTarget.setAttrs(attrsVos);
+                        detailTarget.setAttrs(attrsVos);*/
+
+                        //TODO:设置商品规格
                         nationVos.add(detailTarget);
                     }
                     
@@ -540,7 +550,7 @@ public class OrderServiceImpl implements OrderService {
                         }
                         
                         //查询所购买商品的属性
-                        List<TeaAttributesInfoNationVo> attrsVos = null;
+                       /* List<TeaAttributesInfoNationVo> attrsVos = null;
                         List<TeaAttributesInfo> attributesInfos = null;
                         try {
                             attributesInfos = this.attributesInfoMapper.selectByOrderDetailId(details.getOrderDetailId());
@@ -559,7 +569,9 @@ public class OrderServiceImpl implements OrderService {
                             }
                         }
                         
-                        detailTarget.setAttrs(attrsVos);
+                        detailTarget.setAttrs(attrsVos);*/
+
+                       //TODO:设置商品规格
                         nationVos.add(detailTarget);
                     }
                     
