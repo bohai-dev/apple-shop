@@ -64,7 +64,7 @@ public class ScheduledService {
         if(list != null && list.size() >0){
             TeaStoreInfo info = list.get(0);
             info.setUpdateTime(new Date());
-            this.storeInfoMapper.updateByPrimaryKey(info);
+            this.storeInfoMapper.updateTimeByPrimaryKey(info);
         }
         
         log.info("=====>>>>>使用cron  {}{}",System.currentTimeMillis(),"每天执行");

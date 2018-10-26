@@ -23,6 +23,9 @@ public interface TeaStoreInfoMapper {
 
     int updateByPrimaryKey(TeaStoreInfo record);
     
+    @Update(value="update TEA_STORE_INFO set UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP} where STORE_NO = #{storeNo,jdbcType=VARCHAR}")
+    int updateTimeByPrimaryKey(TeaStoreInfo record);
+    
     @Select(value="select * from TEA_STORE_INFO  order by UPDATE_TIME")
     List<TeaStoreInfo> selectAll();
     
