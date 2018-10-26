@@ -4,6 +4,7 @@ import com.milktea.milkteashop.domain.AppGovernment;
 import com.milktea.milkteashop.exception.MilkTeaException;
 import com.milktea.milkteashop.vo.PageRequestVo;
 import com.milktea.milkteashop.vo.PageResponseVo;
+import com.milktea.milkteashop.vo.ResponseBody;
 
 /**
  * 政府宣传
@@ -40,5 +41,7 @@ public interface AppGovermentService {
      * @throws MilkTeaException
      */
     public PageResponseVo<AppGovernment> query(PageRequestVo pageRequestVo) throws MilkTeaException;
+    
+    public AppGovernment queryGoverment(String id) throws MilkTeaException;
     
 }

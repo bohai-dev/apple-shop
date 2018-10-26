@@ -19,6 +19,7 @@ import com.milktea.milkteashop.exception.MilkTeaException;
 import com.milktea.milkteashop.service.AppGovermentService;
 import com.milktea.milkteashop.vo.PageRequestVo;
 import com.milktea.milkteashop.vo.PageResponseVo;
+import com.milktea.milkteashop.vo.ResponseBody;
 
 @Service("appGovermentService")
 public class AppGovermentServiceImpl implements AppGovermentService {
@@ -123,6 +124,12 @@ public class AppGovermentServiceImpl implements AppGovermentService {
             throw new MilkTeaException(MilkTeaErrorConstant.UNKNOW_EXCEPTION);
         }
         return pageResponseVo;
+    }
+
+    @Override
+    public AppGovernment queryGoverment(String id) throws MilkTeaException {
+        
+        return this.governmentMapper.selectByPrimaryKey(id);
     }
 
 }
