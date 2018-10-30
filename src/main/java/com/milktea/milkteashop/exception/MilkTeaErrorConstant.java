@@ -133,6 +133,8 @@ public enum MilkTeaErrorConstant {
 
     STANDARD_SHOWFLAG_REQUIRED("00061","商品规格必须有一个设为显示规格",""),
 
+    REJECTED_ID_REQUIRED("000062","id不能为空",""),
+
     UNKNOW_EXCEPTION("10000", "程序内部异常" , "Something wrong with program");
     
     final String errorCode;

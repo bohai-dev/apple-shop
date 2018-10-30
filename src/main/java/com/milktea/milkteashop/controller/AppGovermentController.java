@@ -56,6 +56,8 @@ public class AppGovermentController {
         responseBody.setData(this.govermentService.queryGoverment(id));
         return responseBody;
     }
+
+
     
 
 }

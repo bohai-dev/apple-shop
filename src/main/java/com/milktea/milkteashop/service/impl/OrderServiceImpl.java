@@ -41,8 +41,8 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private TeaGoodsInfoMapper goodsInfoMapper;
     
-    @Autowired
-    private TeaAttributesInfoMapper attributesInfoMapper;
+   // @Autowired
+   // private TeaAttributesInfoMapper attributesInfoMapper;
 
     @Autowired
     AppStandardMapper appStandardMapper;
@@ -231,32 +231,6 @@ public class OrderServiceImpl implements OrderService {
                             detailTarget.setGoodsPictureBig(goodsInfo.getUsGoodsPictureBig());
                         }
                     }
-                    
-                /*    //查询所购买商品的属性
-                    List<TeaAttributesInfoNationVo> attrsVos = null;
-                    List<TeaAttributesInfo> attributesInfos = null;
-                    try {
-                        attributesInfos = this.attributesInfoMapper.selectByOrderDetailId(details.getOrderDetailId());
-                    } catch (Exception e) { 
-                        logger.error(MilkTeaErrorConstant.DATABASE_ACCESS_FAILURE.getCnErrorMsg(), e);
-                        throw new MilkTeaException(MilkTeaErrorConstant.DATABASE_ACCESS_FAILURE, e);
-                    }
-                    
-                    if(attributesInfos != null && attributesInfos.size() > 0){
-                        attrsVos = new ArrayList<>();
-                        for (TeaAttributesInfo teaAttributesInfo : attributesInfos) {
-                            TeaAttributesInfoNationVo attrTarget = new TeaAttributesInfoNationVo();
-                            BeanUtils.copyProperties(teaAttributesInfo, attrTarget);
-                            if(requestVo.getLang().equals("zh")){
-                                attrTarget.setAttrName(teaAttributesInfo.getCnAttrName());
-                            }else if(requestVo.getLang().equals("en")){
-                                attrTarget.setAttrName(teaAttributesInfo.getUsAttrName());
-                            }
-                            attrsVos.add(attrTarget);
-                        }
-                    }
-                    
-                    detailTarget.setAttrs(attrsVos);*/
 
                     //TODO:设置商品规格
 
@@ -337,27 +311,6 @@ public class OrderServiceImpl implements OrderService {
                         }
 
 
-                     /*   //查询所购买商品的属性
-                        List<TeaAttributesInfoNationVo> attrsVos = null;
-                        List<TeaAttributesInfo> attributesInfos = null;
-                        try {
-                            attributesInfos = this.attributesInfoMapper.selectByOrderDetailId(details.getOrderDetailId());
-                        } catch (Exception e) { 
-                            logger.error(MilkTeaErrorConstant.DATABASE_ACCESS_FAILURE.getCnErrorMsg(), e);
-                            throw new MilkTeaException(MilkTeaErrorConstant.DATABASE_ACCESS_FAILURE, e);
-                        }
-                        
-                        if(attributesInfos != null && attributesInfos.size() > 0){
-                            attrsVos = new ArrayList<>();
-                            for (TeaAttributesInfo teaAttributesInfo : attributesInfos) {
-                                TeaAttributesInfoNationVo attrTarget = new TeaAttributesInfoNationVo();
-                                BeanUtils.copyProperties(teaAttributesInfo, attrTarget);
-                                attrTarget.setAttrName(teaAttributesInfo.getCnAttrName());
-                                attrsVos.add(attrTarget);
-                            }
-                        }
-                        
-                        detailTarget.setAttrs(attrsVos);*/
                         //设置商品规格
                         String standardName=this.appStandardMapper.selectByPrimaryKey(details.getStandardId()).getName();
                         detailTarget.setStandardName(standardName);
@@ -467,8 +420,9 @@ public class OrderServiceImpl implements OrderService {
         return resultList;
     }
 
+    //修改订单
     @Override
-    public void modifyOrderStatus(ModifyOrderStatusRequestVo requestVo) throws MilkTeaException {
+    public void modifyOrder(ModifyOrderStatusRequestVo requestVo) throws MilkTeaException {
 
         if(requestVo == null){
             throw new MilkTeaException(MilkTeaErrorConstant.PARAMETER_REQUIRED);
@@ -484,11 +438,12 @@ public class OrderServiceImpl implements OrderService {
         
         TeaOrderInfo orderInfo = new TeaOrderInfo();
         orderInfo.setOrderNo(requestVo.getOrderNo());
-        //制作完成
-        if(requestVo.getOrderStatus().equals("1")){
-            orderInfo.setMakeFinishTime(new Date());
-        }
+        //设置订单状态
         orderInfo.setOrderStatus(requestVo.getOrderStatus());
+        //设置订单快递单号
+        if (StringUtils.isNotBlank(requestVo.getTrakingNo())){
+            orderInfo.setTakeNo(requestVo.getTrakingNo());
+        }
         try {
             this.orderInfoMapper.updateByPrimaryKeySelective(orderInfo);
         } catch (Exception e) {
@@ -548,28 +503,6 @@ public class OrderServiceImpl implements OrderService {
                             detailTarget.setGoodsName(goodsInfo.getCnGoodsName());
                             detailTarget.setGoodsPictureBig(goodsInfo.getCnGoodsPictureBig());
                         }
-                        
-                        //查询所购买商品的属性
-                       /* List<TeaAttributesInfoNationVo> attrsVos = null;
-                        List<TeaAttributesInfo> attributesInfos = null;
-                        try {
-                            attributesInfos = this.attributesInfoMapper.selectByOrderDetailId(details.getOrderDetailId());
-                        } catch (Exception e) { 
-                            logger.error(MilkTeaErrorConstant.DATABASE_ACCESS_FAILURE.getCnErrorMsg(), e);
-                            throw new MilkTeaException(MilkTeaErrorConstant.DATABASE_ACCESS_FAILURE, e);
-                        }
-                        
-                        if(attributesInfos != null && attributesInfos.size() > 0){
-                            attrsVos = new ArrayList<>();
-                            for (TeaAttributesInfo teaAttributesInfo : attributesInfos) {
-                                TeaAttributesInfoNationVo attrTarget = new TeaAttributesInfoNationVo();
-                                BeanUtils.copyProperties(teaAttributesInfo, attrTarget);
-                                attrTarget.setAttrName(teaAttributesInfo.getCnAttrName());
-                                attrsVos.add(attrTarget);
-                            }
-                        }
-                        
-                        detailTarget.setAttrs(attrsVos);*/
 
                        //TODO:设置商品规格
                         nationVos.add(detailTarget);

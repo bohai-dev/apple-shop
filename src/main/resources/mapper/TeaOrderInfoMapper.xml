@@ -292,6 +292,10 @@
         <if test="endDate != null">
             and ORDER_TIME <![CDATA[ <= ]]> #{endDate,jdbcType=TIMESTAMP}
         </if>
+        <if test="storeName != null">
+            and exists (select 1 from TEA_STORE_INFO where TEA_STORE_INFO.STORE_NO = TEA_ORDER_INFO.STORE_NO
+                        and TEA_STORE_INFO.CN_STORE_NAME = #{storeName,jdbcType=VARCHAR})
+        </if>
     </where>
     order by ORDER_TIME desc
   </select>

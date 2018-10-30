@@ -33,6 +33,8 @@ public class QueryOrdersRequestVo {
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date endDate;
 
+    private String storeName;
+
     public String getPromotionId() {
         return promotionId;
     }
@@ -120,5 +122,13 @@ public class QueryOrdersRequestVo {
     public void setLang(String lang) {
         this.lang = lang;
     }
-    
+
+
+    public String getStoreName() {
+        return storeName;
+    }
+
+    public void setStoreName(String storeName) {
+        this.storeName = storeName;
+    }
 }
