@@ -388,7 +388,7 @@ public class GoodsServiceImpl implements GoodsService {
                 vo.setGoodsAttrs(attributesInfos);*/
 
                 //查询商品规格
-                List<AppStandard> standardList=appleStandMapper.selectByGoodsId(goodsInfo.getGoodsId(),"0");
+                List<AppStandard> standardList=appleStandMapper.selectByGoodsIdAndStatus(goodsInfo.getGoodsId(),"0");
                 vo.setStandardList(standardList);
                 list.add(vo);
             }
@@ -438,7 +438,7 @@ public class GoodsServiceImpl implements GoodsService {
             }
             goodsInfoVo.setGoodsAttrs(attributesInfos);*/
             //查询商品规格
-            List<AppStandard> standardList=appleStandMapper.selectByGoodsId(goodsInfo.getGoodsId(),"0");
+            List<AppStandard> standardList=appleStandMapper.selectByGoodsIdAndStatus(goodsInfo.getGoodsId(),"0");
             goodsInfoVo.setStandardList(standardList);
         }
         
@@ -531,7 +531,7 @@ public class GoodsServiceImpl implements GoodsService {
                         logger.error(MilkTeaErrorConstant.UNKNOW_EXCEPTION.getCnErrorMsg(), e);
                         throw new MilkTeaException(MilkTeaErrorConstant.UNKNOW_EXCEPTION, e);
                     }
-                    List<AppStandard> standardList=appleStandMapper.selectByGoodsId(info.getGoodsId(),"0");
+                    List<AppStandard> standardList=appleStandMapper.selectByGoodsIdAndStatus(info.getGoodsId(),"0");
                     goodsInfoVo.setStandardList(standardList);
                     goodsInfoVos.add(goodsInfoVo);
                 }
@@ -721,7 +721,7 @@ public class GoodsServiceImpl implements GoodsService {
 
 
                         //设置商品规格
-                        List<AppStandard> standardList=appleStandMapper.selectByGoodsId(info.getGoodsId(),"0");
+                        List<AppStandard> standardList=appleStandMapper.selectByGoodsIdAndStatus(info.getGoodsId(),"0");
                         goodsInfoVo.setGoodsStandardList(standardList);
 
                         goodsInfoVos.add(goodsInfoVo);
