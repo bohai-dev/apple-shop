@@ -45,7 +45,7 @@ public class OrderController {
     }
     
     /**
-     * 根据订单编号查询订单信息（支持国际化）
+     * 根据订单编号查询订单信息
      * @param requestVo
      * @return
      * @throws MilkTeaException

@@ -180,11 +180,7 @@ public class OrderServiceImpl implements OrderService {
         if(StringUtils.isBlank(requestVo.getOrderNo())){
             throw new MilkTeaException(MilkTeaErrorConstant.ORDER_NO_REQUIRED);
         }
-        
-        if(StringUtils.isBlank(requestVo.getLang())){
-            throw new MilkTeaException(MilkTeaErrorConstant.LANG_REQUIRED);
-        }
-        
+
         TeaOrderInfo orderInfo = null;
         try {
             orderInfo = this.orderInfoMapper.selectByPrimaryKey(requestVo.getOrderNo());
@@ -223,18 +219,18 @@ public class OrderServiceImpl implements OrderService {
                         throw new MilkTeaException(MilkTeaErrorConstant.DATABASE_ACCESS_FAILURE, e);
                     }
                     if(goodsInfo != null){
-                        if(requestVo.getLang().equals("zh")){
-                            detailTarget.setGoodsName(goodsInfo.getCnGoodsName());
-                            detailTarget.setGoodsPictureBig(goodsInfo.getCnGoodsPictureBig());
-                        }else if(requestVo.getLang().equals("en")){
-                            detailTarget.setGoodsName(goodsInfo.getUsGoodsName());
-                            detailTarget.setGoodsPictureBig(goodsInfo.getUsGoodsPictureBig());
-                        }
+                        detailTarget.setGoodsName(goodsInfo.getCnGoodsName());
+                        detailTarget.setGoodsPictureBig(goodsInfo.getCnGoodsPictureBig());
                     }
 
                     //TODO:设置商品规格
+                    //设置商品规格
+                    String standardName=this.appStandardMapper.selectByPrimaryKey(details.getStandardId()).getName();
+                    detailTarget.setStandardName(standardName);
 
                     nationVos.add(detailTarget);
+
+
                 }
                 
             }

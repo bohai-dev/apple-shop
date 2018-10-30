@@ -12,4 +12,5 @@ import com.milktea.milkteashop.vo.QueryRejectedRequestVo;
 public interface AppRejectedService {
 
     PageResponseVo<AppRejected> queryByPage(PageRequestVo<QueryRejectedRequestVo> pageRequestVo) throws MilkTeaException;
+    void updateRejected(AppRejected appRejected) throws MilkTeaException;
 }

@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -66,6 +67,20 @@ public class AppRejectedServiceImpl implements AppRejectedService {
 
         if (StringUtils.isNotBlank(appRejected.getId())){
            throw  new MilkTeaException(MilkTeaErrorConstant.REJECTED_ID_REQUIRED);
+        }
+        if (StringUtils.isNotBlank(appRejected.getHandleStatus())){
+          throw new MilkTeaException(MilkTeaErrorConstant.REJECTED_STATUS_REQUIED);
+        }
+        //处理中
+        if (appRejected.getHandleStatus().equals("1")){
+           //设置处理时间
+          appRejected.setHandleTime(new Date());
+        }
+
+        //处理成功
+        if (appRejected.getHandleStatus().equals("2")){
+            //设置处理成功时间
+          appRejected.setConfirmTime(new Date());
         }
 
         rejectedMapper.updateByPrimaryKeySelective(appRejected);
