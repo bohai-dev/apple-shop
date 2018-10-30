@@ -56,7 +56,7 @@ public interface AppStandardMapper {
     
     /**
      * 更新规格库存
-     * @param goodsId
+     * @param standardId
      * @param volume
      * @return
      */
