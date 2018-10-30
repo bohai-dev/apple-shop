@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.milktea.milkteashop.dao.AppRejectedMapper">
+    <resultMap id="BaseResultMap" type="com.milktea.milkteashop.domain.AppRejected">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="ORDER_ID" property="orderId" jdbcType="VARCHAR"/>
+        <result column="SHOP_ID" property="shopId" jdbcType="VARCHAR"/>
+        <result column="USER_ID" property="userId" jdbcType="VARCHAR"/>
+        <result column="REASON" property="reason" jdbcType="VARCHAR"/>
+        <result column="REASON_IMAGE_PATHS" property="reasonImagePaths" jdbcType="VARCHAR"/>
+        <result column="HANDLE_STATUS" property="handleStatus" jdbcType="CHAR"/>
+        <result column="HANDLE_PERSON" property="handlePerson" jdbcType="VARCHAR"/>
+        <result column="HANDLE_REMARK" property="handleRemark" jdbcType="VARCHAR"/>
+        <result column="HANDLE_TIME" property="handleTime" jdbcType="TIMESTAMP"/>
+        <result column="CONFIRM_PERSON" property="confirmPerson" jdbcType="VARCHAR"/>
+        <result column="CONFIRM_TIME" property="confirmTime" jdbcType="TIMESTAMP"/>
+        <result column="TRACKING_NO" property="trackingNo" jdbcType="VARCHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="PRICE" property="price" jdbcType="DECIMAL"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    ID, ORDER_ID, SHOP_ID, USER_ID, REASON, REASON_IMAGE_PATHS, HANDLE_STATUS, HANDLE_PERSON, 
+    HANDLE_REMARK, HANDLE_TIME, CONFIRM_PERSON, CONFIRM_TIME, TRACKING_NO, CREATE_TIME, 
+    PRICE
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from APP_REJECTED
+        where ID = #{id,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from APP_REJECTED
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+
+    <insert id="insertSelective" parameterType="com.milktea.milkteashop.domain.AppRejected">
+        insert into APP_REJECTED
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="orderId != null">
+                ORDER_ID,
+            </if>
+            <if test="shopId != null">
+                SHOP_ID,
+            </if>
+            <if test="userId != null">
+                USER_ID,
+            </if>
+            <if test="reason != null">
+                REASON,
+            </if>
+            <if test="reasonImagePaths != null">
+                REASON_IMAGE_PATHS,
+            </if>
+            <if test="handleStatus != null">
+                HANDLE_STATUS,
+            </if>
+            <if test="handlePerson != null">
+                HANDLE_PERSON,
+            </if>
+            <if test="handleRemark != null">
+                HANDLE_REMARK,
+            </if>
+            <if test="handleTime != null">
+                HANDLE_TIME,
+            </if>
+            <if test="confirmPerson != null">
+                CONFIRM_PERSON,
+            </if>
+            <if test="confirmTime != null">
+                CONFIRM_TIME,
+            </if>
+            <if test="trackingNo != null">
+                TRACKING_NO,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="price != null">
+                PRICE,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="orderId != null">
+                #{orderId,jdbcType=VARCHAR},
+            </if>
+            <if test="shopId != null">
+                #{shopId,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="reason != null">
+                #{reason,jdbcType=VARCHAR},
+            </if>
+            <if test="reasonImagePaths != null">
+                #{reasonImagePaths,jdbcType=VARCHAR},
+            </if>
+            <if test="handleStatus != null">
+                #{handleStatus,jdbcType=CHAR},
+            </if>
+            <if test="handlePerson != null">
+                #{handlePerson,jdbcType=VARCHAR},
+            </if>
+            <if test="handleRemark != null">
+                #{handleRemark,jdbcType=VARCHAR},
+            </if>
+            <if test="handleTime != null">
+                #{handleTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="confirmPerson != null">
+                #{confirmPerson,jdbcType=VARCHAR},
+            </if>
+            <if test="confirmTime != null">
+                #{confirmTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="trackingNo != null">
+                #{trackingNo,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="price != null">
+                #{price,jdbcType=DECIMAL},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.milktea.milkteashop.domain.AppRejected">
+        update APP_REJECTED
+        <set>
+            <if test="orderId != null">
+                ORDER_ID = #{orderId,jdbcType=VARCHAR},
+            </if>
+            <if test="shopId != null">
+                SHOP_ID = #{shopId,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                USER_ID = #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="reason != null">
+                REASON = #{reason,jdbcType=VARCHAR},
+            </if>
+            <if test="reasonImagePaths != null">
+                REASON_IMAGE_PATHS = #{reasonImagePaths,jdbcType=VARCHAR},
+            </if>
+            <if test="handleStatus != null">
+                HANDLE_STATUS = #{handleStatus,jdbcType=CHAR},
+            </if>
+            <if test="handlePerson != null">
+                HANDLE_PERSON = #{handlePerson,jdbcType=VARCHAR},
+            </if>
+            <if test="handleRemark != null">
+                HANDLE_REMARK = #{handleRemark,jdbcType=VARCHAR},
+            </if>
+            <if test="handleTime != null">
+                HANDLE_TIME = #{handleTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="confirmPerson != null">
+                CONFIRM_PERSON = #{confirmPerson,jdbcType=VARCHAR},
+            </if>
+            <if test="confirmTime != null">
+                CONFIRM_TIME = #{confirmTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="trackingNo != null">
+                TRACKING_NO = #{trackingNo,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="price != null">
+                PRICE = #{price,jdbcType=DECIMAL},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=VARCHAR}
+    </update>
+
+
+    <select id="selectByConditions" parameterType="com.milktea.milkteashop.vo.QueryRejectedRequestVo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from APP_REJECTED
+        <where>
+            <if test="storeNo !=null">
+                SHOP_ID = #{storeNo,jdbcType=VARCHAR}
+            </if>
+            <if test="orderNo!=null">
+               and ORDER_ID =#{orderNo,jdbcType=VARCHAR}
+            </if>
+            <if test="userNo!=null">
+               and USER_ID =#{userNo,jdbcType=VARCHAR}
+            </if>
+            <if test="handleStatus!=null">
+               and HANDLE_STATUS =#{handleStatus,jdbcType=CHAR}
+            </if>
+            <if test="storeName!=null">
+               and exists (select 1 from TEA_STORE_INFO where TEA_STORE_INFO.STORE_NO = APP_REJECTED.SHOP_ID
+                and TEA_STORE_INFO.CN_STORE_NAME = #{storeName,jdbcType=VARCHAR})
+            </if>
+
+        </where>
+        order by  CREATE_TIME
+
+    </select>
+</mapper>
