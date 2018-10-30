@@ -1,5 +1,7 @@
 package com.milktea.milkteashop.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -16,8 +18,10 @@ public class AppStandard {
 
     private BigDecimal stock;
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date createdTime;
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date updatedTime;
     //删除flag 0不删除，1删除
     private String deleteFlag;

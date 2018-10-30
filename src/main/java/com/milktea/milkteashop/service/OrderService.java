@@ -44,11 +44,11 @@ public interface OrderService {
     public List<OrderNationVo> queryOrder(QueryOrdersRequestVo requestVo) throws MilkTeaException;
     
     /**
-     * 修改订单状态
+     * 修改订单
      * @param requestVo
      * @throws MilkTeaException
      */
-    public void modifyOrderStatus(ModifyOrderStatusRequestVo requestVo) throws MilkTeaException;
+    public void modifyOrder(ModifyOrderStatusRequestVo requestVo) throws MilkTeaException;
     
     /**
      * 查询即将超时的预约单

@@ -45,7 +45,7 @@ public class OrderController {
     }
     
     /**
-     * 根据订单编号查询订单信息（支持国际化）
+     * 根据订单编号查询订单信息
      * @param requestVo
      * @return
      * @throws MilkTeaException
@@ -92,16 +92,16 @@ public class OrderController {
     }
     
     /**
-     * 更新订单状态
+     * TODO: 更新订单
      * @param requestVo
      * @return
      * @throws MilkTeaException
      */
-    @RequestMapping(value="modifyOrderStatus", method=RequestMethod.POST)
-    public ResponseHeader modifyOrderStatus(@RequestBody(required=false) ModifyOrderStatusRequestVo requestVo) throws MilkTeaException{
-        this.orderService.modifyOrderStatus(requestVo);
-        
-        QueryOrdersRequestVo ordersRequestVo = new QueryOrdersRequestVo();
+    @RequestMapping(value="modifyOrder", method=RequestMethod.POST)
+    public ResponseHeader modifyOrder(@RequestBody(required=false) ModifyOrderStatusRequestVo requestVo) throws MilkTeaException{
+
+        this.orderService.modifyOrder(requestVo);
+     /*   QueryOrdersRequestVo ordersRequestVo = new QueryOrdersRequestVo();
         ordersRequestVo.setOrderNo(requestVo.getOrderNo());
         ordersRequestVo.setLang("zh");
         OrderNationVo nationVo = orderService.queryOrderByOrderNo(ordersRequestVo);
@@ -121,7 +121,7 @@ public class OrderController {
             } catch (Exception e) {
                 throw new MilkTeaException(MilkTeaErrorConstant.UNKNOW_EXCEPTION,e);
             }
-        }
+        }*/
         return new ResponseHeader();
     }
 }

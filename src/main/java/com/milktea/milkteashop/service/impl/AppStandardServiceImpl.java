@@ -29,15 +29,15 @@ public class AppStandardServiceImpl implements AppStandardService {
     public int addStanard(AppStandard appStandard) throws MilkTeaException{
         String standardName=appStandard.getName();
          //name不能为空
-        if (StringUtils.isBlank(standardName)){
+       /* if (StringUtils.isBlank(standardName)){
             throw new MilkTeaException(MilkTeaErrorConstant.STANDARD_NAME_REQUIRD);
-        }
+        }*/
 
         //name不能重复
-        List<AppStandard> list=standardMapper.selectByName(standardName);
+       /* List<AppStandard> list=standardMapper.selectByName(standardName);
         if (list.size()>0){
            throw new MilkTeaException(MilkTeaErrorConstant.STANDARD_NAME_EXISTS);
-        }
+        }*/
         String id=standardMapper.generateAttrId();
         appStandard.setId(id);
         appStandard.setDeleteFlag("0");
@@ -100,8 +100,8 @@ public class AppStandardServiceImpl implements AppStandardService {
      * @param id
      * @return
      */
-    @Override
+  /*  @Override
     public List<AppStandard> selectByGoodsId(String id) {
         return standardMapper.selectByGoodsId(id);
-    }
+    }*/
 }

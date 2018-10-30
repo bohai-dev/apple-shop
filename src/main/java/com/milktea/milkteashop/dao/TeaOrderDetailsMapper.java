@@ -10,7 +10,6 @@ import com.milktea.milkteashop.domain.TeaOrderDetails;
 public interface TeaOrderDetailsMapper {
     int deleteByPrimaryKey(String orderDetailId);
 
-    int insert(TeaOrderDetails record);
 
     int insertSelective(TeaOrderDetails record);
 

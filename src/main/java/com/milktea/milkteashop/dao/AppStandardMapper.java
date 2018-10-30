@@ -51,6 +51,9 @@ public interface AppStandardMapper {
     @Select("select * from APP_STANDARD where GOOD_ID=#{0}")
     List<AppStandard> selectByGoodsId(String goodsId);
     
+    @Select("select * from APP_STANDARD where GOOD_ID=#{goodsId} and DELETE_Flag=#{status}")
+    List<AppStandard> selectByGoodsId(@Param("goodsId") String goodsId,@Param("status") String status);
+    
     /**
      * 更新规格库存
      * @param goodsId

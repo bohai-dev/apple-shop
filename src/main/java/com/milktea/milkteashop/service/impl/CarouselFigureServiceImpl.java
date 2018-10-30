@@ -132,10 +132,10 @@ public class CarouselFigureServiceImpl implements CarouselFigureService {
             throw new MilkTeaException(MilkTeaErrorConstant.STORE_NO_REQUIRED);
         }
         
-        if(StringUtils.isBlank(figureNationVo.getLang())){
+    /*    if(StringUtils.isBlank(figureNationVo.getLang())){
             throw new MilkTeaException(MilkTeaErrorConstant.LANG_REQUIRED);
         }
-        
+        */
         TeaCarouselFigure figure = new TeaCarouselFigure();
         figure.setStoreNo(figureNationVo.getStoreNo());
         
@@ -153,11 +153,8 @@ public class CarouselFigureServiceImpl implements CarouselFigureService {
             for (TeaCarouselFigure carouselFigure : list) {
                 TeaCarouselFigureNationVo target = new TeaCarouselFigureNationVo();
                 BeanUtils.copyProperties(carouselFigure, target);
-                if(figureNationVo.getLang().equals("zh")){
-                    target.setFigureAddress(carouselFigure.getCnFigureAddress());
-                }else if (figureNationVo.getLang().equals("en")) {
-                    target.setFigureAddress(carouselFigure.getUsFigureAddress());
-                }
+
+                target.setFigureAddress(carouselFigure.getCnFigureAddress());
                 
                 result.add(target);
             }
