@@ -10,9 +10,7 @@ public class QueryRejectedRequestVo {
     private String storeName;
     private String orderNo;
     private String userNo;
-
-    //处理状态，0待处理；1处理中；2处理成功
-    private String handleStatus;
+    private String handleStatus;   //处理状态，0待处理；1处理中；2处理成功
 
     public String getStoreNo() {
         return storeNo;
@@ -53,4 +51,5 @@ public class QueryRejectedRequestVo {
     public void setHandleStatus(String handleStatus) {
         this.handleStatus = handleStatus;
     }
+
 }
