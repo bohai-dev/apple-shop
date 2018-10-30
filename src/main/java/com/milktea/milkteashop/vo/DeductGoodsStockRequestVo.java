@@ -10,21 +10,21 @@ import java.math.BigDecimal;
 public class DeductGoodsStockRequestVo {
     
     /**
-     * 商品ID
+     * 规格ID
      */
-    private String goodsId;
+    private String standardId;
     
     /**
      * 扣减数量
      */
     private BigDecimal volume;
 
-    public String getGoodsId() {
-        return goodsId;
+    public String getStandardId() {
+        return standardId;
     }
 
-    public void setGoodsId(String goodsId) {
-        this.goodsId = goodsId;
+    public void setStandardId(String standardId) {
+        this.standardId = standardId;
     }
 
     public BigDecimal getVolume() {

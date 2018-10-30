@@ -2,9 +2,11 @@ package com.milktea.milkteashop.dao;
 
 import com.milktea.milkteashop.domain.AppStandard;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Mapper
@@ -48,4 +50,13 @@ public interface AppStandardMapper {
      */
     @Select("select * from APP_STANDARD where GOOD_ID=#{0}")
     List<AppStandard> selectByGoodsId(String goodsId);
+    
+    /**
+     * 更新规格库存
+     * @param goodsId
+     * @param volume
+     * @return
+     */
+    @Update(value="update APP_STANDARD set STOCK = STOCK - #{volume} where ID = #{standardId}")
+    int updateStockBystandardId(@Param("standardId") String standardId,@Param("volume") BigDecimal volume);
 }
