@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Mapper
@@ -47,6 +48,18 @@ public interface AppStandardMapper {
      * @param goodsId
      * @return
      */
+    @Select("select * from APP_STANDARD where GOOD_ID=#{0}")
+    List<AppStandard> selectByGoodsId(String goodsId);
+    
     @Select("select * from APP_STANDARD where GOOD_ID=#{goodsId} and DELETE_Flag=#{status}")
     List<AppStandard> selectByGoodsId(@Param("goodsId") String goodsId,@Param("status") String status);
+    
+    /**
+     * 更新规格库存
+     * @param goodsId
+     * @param volume
+     * @return
+     */
+    @Update(value="update APP_STANDARD set STOCK = STOCK - #{volume} where ID = #{standardId}")
+    int updateStockBystandardId(@Param("standardId") String standardId,@Param("volume") BigDecimal volume);
 }

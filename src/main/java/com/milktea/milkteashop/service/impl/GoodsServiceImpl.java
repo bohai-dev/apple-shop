@@ -52,6 +52,9 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Autowired
     private AppStandardService standardService;
+    
+    @Autowired
+    private AppStandardMapper standardMapper;
 
     @Override
     @Transactional(rollbackFor=MilkTeaException.class)
@@ -577,45 +580,33 @@ public class GoodsServiceImpl implements GoodsService {
             throw new MilkTeaException(MilkTeaErrorConstant.PARAMETER_REQUIRED);
         }
         
-        if(StringUtils.isBlank(requestVo.getGoodsId())){
-            throw new MilkTeaException(MilkTeaErrorConstant.GOODS_ID_REQUIRED);
+        if(StringUtils.isBlank(requestVo.getStandardId())){
+            throw new MilkTeaException(MilkTeaErrorConstant.STANDARD_ID_REQUIRED);
         }
         
         if(requestVo.getVolume() == null){
             throw new MilkTeaException(MilkTeaErrorConstant.VOLUME_ILLEGAL);
         }
         
-        TeaGoodsInfo goodsInfo = null;
-        
+        AppStandard appStandard = null;
+
         try {
-            goodsInfo = this.goodsInfoMapper.selectByPrimaryKey(requestVo.getGoodsId());
-            
+            appStandard = standardMapper.selectByPrimaryKey(requestVo.getStandardId());
         } catch (Exception e) {
             logger.error(MilkTeaErrorConstant.DATABASE_ACCESS_FAILURE.getCnErrorMsg(), e);
-            throw new MilkTeaException(MilkTeaErrorConstant.DATABASE_ACCESS_FAILURE, e);
-        }
-        
-        if(goodsInfo == null){
-            logger.warn(MilkTeaErrorConstant.GOODS_NOT_EXISTS.getCnErrorMsg());
-            throw new MilkTeaException(MilkTeaErrorConstant.GOODS_NOT_EXISTS);
-        }
-        
-        //非在售商品
-        if(goodsInfo.getGoodsStatus() != null && !goodsInfo.getGoodsStatus().equals("1")){
-            logger.warn(MilkTeaErrorConstant.GOODS_NOT_ON_SALE.getCnErrorMsg());
-            throw new MilkTeaException(MilkTeaErrorConstant.GOODS_NOT_ON_SALE);
+            throw new MilkTeaException(MilkTeaErrorConstant.DATABASE_ACCESS_FAILURE);
         }
         
         //商品库存未维护
-        if(goodsInfo.getGoodsStock() == null){
+        if(appStandard == null || appStandard.getStock() == null){
             logger.warn(MilkTeaErrorConstant.GOODS_STOCK_UNMAINTAINED.getCnErrorMsg());
             throw new MilkTeaException(MilkTeaErrorConstant.GOODS_STOCK_UNMAINTAINED);
         }
         
         //扣减商品库存
-        if(goodsInfo.getGoodsStock().compareTo(requestVo.getVolume()) > -1){
+        if(appStandard.getStock().compareTo(requestVo.getVolume()) > -1){
             try {
-                this.goodsInfoMapper.updateStockByGoodsId(requestVo.getGoodsId(), requestVo.getVolume());
+                this.appleStandMapper.updateStockBystandardId(requestVo.getStandardId(), requestVo.getVolume());
             } catch (Exception e) {
                 logger.error(MilkTeaErrorConstant.DATABASE_ACCESS_FAILURE.getCnErrorMsg(), e);
                 throw new MilkTeaException(MilkTeaErrorConstant.DATABASE_ACCESS_FAILURE, e);
