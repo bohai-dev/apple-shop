@@ -1,10 +1,6 @@
-package com.milktea.milkteashop.Utils;
-import com.milktea.milkteashop.utils.HttpUtil;
-import com.milktea.milkteashop.utils.JsonUtil;
-import org.junit.Assert;
+package com.milktea.milkteashop.utils;
 import org.junit.Test;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

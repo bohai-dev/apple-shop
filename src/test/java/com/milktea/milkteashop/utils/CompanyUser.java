@@ -1,4 +1,4 @@
-package com.milktea.milkteashop.Utils;
+package com.milktea.milkteashop.utils;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 

@@ -330,6 +330,11 @@ public class GoodsServiceImpl implements GoodsService {
         
     }
 
+    /**
+     * @param infoVo
+     * @return
+     * @throws MilkTeaException
+     */
     @Override
     public List<GoodsInfoVo> queryGoodsInfo(GoodsInfoVo infoVo) throws MilkTeaException {
         

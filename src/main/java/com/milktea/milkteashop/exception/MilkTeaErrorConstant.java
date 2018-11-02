@@ -135,10 +135,15 @@ public enum MilkTeaErrorConstant {
 
     REJECTED_ID_REQUIRED("000062","id不能为空",""),
 
-    REJECTED_STATUS_REQUIED("0000063","处理状态不能为空",""),
+    REJECTED_STATUS_REQUIED("000063","处理状态不能为空",""),
+    QUERY_TIME_REQUIRED("000064","开始时间和结束时间不能为空",""),
+
+
+
+
 
     UNKNOW_EXCEPTION("10000", "程序内部异常" , "Something wrong with program");
-    
+
     final String errorCode;
     
     final String cnErrorMsg;

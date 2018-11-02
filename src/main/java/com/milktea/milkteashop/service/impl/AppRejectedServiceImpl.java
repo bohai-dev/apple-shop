@@ -65,10 +65,10 @@ public class AppRejectedServiceImpl implements AppRejectedService {
 
     public void updateRejected(AppRejected appRejected) throws MilkTeaException{
 
-        if (StringUtils.isNotBlank(appRejected.getId())){
+        if (StringUtils.isBlank(appRejected.getId())){
            throw  new MilkTeaException(MilkTeaErrorConstant.REJECTED_ID_REQUIRED);
         }
-        if (StringUtils.isNotBlank(appRejected.getHandleStatus())){
+        if (StringUtils.isBlank(appRejected.getHandleStatus())){
           throw new MilkTeaException(MilkTeaErrorConstant.REJECTED_STATUS_REQUIED);
         }
         //处理中
