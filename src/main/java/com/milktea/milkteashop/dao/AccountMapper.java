@@ -12,7 +12,6 @@ import java.util.List;
 @Mapper
 public interface AccountMapper {
 
-    AccountVo selectByCondition(AccountRequestVo requestVo);
+    List<AccountVo>  selectByCondition(AccountRequestVo requestVo);
 
-    List<AccountVo> selectAll(AccountRequestVo requestVo);
 }

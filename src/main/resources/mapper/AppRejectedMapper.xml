@@ -18,6 +18,12 @@
         <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
         <result column="PRICE" property="price" jdbcType="DECIMAL"/>
     </resultMap>
+    <resultMap id="accountMap" type="com.milktea.milkteashop.vo.RejectedAccountVo">
+        <result column="REJECTED_ACCOUNT" property="rejectdCount" jdbcType="INTEGER"/>
+        <result column="REJECTED_MONEY" property="rejectedMoney" jdbcType="INTEGER"/>
+
+    </resultMap>
+
     <sql id="Base_Column_List">
     ID, ORDER_ID, SHOP_ID, USER_ID, REASON, REASON_IMAGE_PATHS, HANDLE_STATUS, HANDLE_PERSON, 
     HANDLE_REMARK, HANDLE_TIME, CONFIRM_PERSON, CONFIRM_TIME, TRACKING_NO, CREATE_TIME, 
@@ -200,11 +206,25 @@
             </if>
             <if test="storeName!=null">
                and exists (select 1 from TEA_STORE_INFO where TEA_STORE_INFO.STORE_NO = APP_REJECTED.SHOP_ID
-                and TEA_STORE_INFO.CN_STORE_NAME = #{storeName,jdbcType=VARCHAR})
+               and TEA_STORE_INFO.CN_STORE_NAME = #{storeName,jdbcType=VARCHAR})
             </if>
-
         </where>
         order by  CREATE_TIME
+    </select>
+
+    <select id="account" parameterType="com.milktea.milkteashop.vo.RejectedAccountVo" resultMap="accountMap">
+       select count(*) as REJECTED_ACCOUNT,NVL(sum(b.price),0) as REJECTED_MONEY from tea_order_info a,app_rejected b
+       where a.ORDER_STATUS='2'
+       <if test="beginTime!=null">
+           and to_char(a.ORDER_TIME,'yyyy-mm-dd')<![CDATA[ >= ]]>#{beginTime,jdbcType=VARCHAR}
+       </if>
+        <if test="finishTime!=null">
+            and to_char(a.ORDER_TIME,'yyyy-mm-dd') <![CDATA[ <= ]]>#{finishTime,jdbcType=VARCHAR}
+        </if>
+        <if test="storeNo!=null">
+            and a.STORE_NO =#{storeNo,jdbcType=VARCHAR}
+        </if>
+        and a.ORDER_NO=b.ORDER_ID
 
     </select>
 </mapper>

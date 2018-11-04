@@ -2,39 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.milktea.milkteashop.dao.AccountMapper" >
     <resultMap id="BaseResultMap" type="com.milktea.milkteashop.vo.AccountVo" >
-        <result column="ORDER_COUNT" property="orderCount" jdbcType="VARCHAR" />
+        <result column="ORDER_COUNT" property="orderCount" jdbcType="INTEGER" />
         <result column="ORDER_TOTAL_MONEY" property="orderTotalMoney" jdbcType="DECIMAL" />
         <result column="STORE_NO" property="storeNo" jdbcType="VARCHAR"/>
         <result column="STORE_NAME" property="storeName" jdbcType="VARCHAR"/>
+        <result column="RETURN_COUNT" property="returnCount" jdbcType="INTEGER"/>
+        <result column="RETURN_MONEY"  property="returnMoney"  jdbcType="DECIMAL"/>
     </resultMap>
-    
+
+
+
+    <!-- select a.*,b.cn_store_name from(select  STORE_NO, count(*) as ORDER_COUNT,sum(a.ORDER_PRICE) as ORDER_TOTAL_MONEY from TEA_ORDER_INFO a where
+     to_char(a.ORDER_TIME,'yyyy-mm-dd')<'2018-11-01'  and  to_char(a.ORDER_TIME,'yyyy-mm-dd')>'2018-10-30' and a.STORE_NO='D00026' GROUP BY STORE_NO) a,
+     tea_store_info b where a.store_no = b.store_no;-->
+
     <select id="selectByCondition" parameterType="com.milktea.milkteashop.vo.AccountRequestVo"  resultMap="BaseResultMap">
-
-        select count(*) as ORDER_COUNT,sum(ORDER_PRICE) as ORDER_TOTAL_MONEY
-        from TEA_ORDER_INFO
-
-        <where>
-           <if test="beginTime!=null">
-               to_char(ORDER_TIME,'yyyy-mm-dd')<![CDATA[ >= ]]>#{beginTime,jdbcType=VARCHAR}
-           </if>
-          <if test="finishTime!=null">
-              and to_char(ORDER_TIME,'yyyy-mm-dd') <![CDATA[ <= ]]> #{finishTime,jdbcType=VARCHAR}
-          </if>
-          <if test="storeNo!=null">
-             and STORE_NO =#{storeNo}
-          </if>
-
-        </where>
-
-
-    </select>
-
-   <!-- select a.*,b.cn_store_name from(select  STORE_NO, count(*) as ORDER_COUNT,sum(a.ORDER_PRICE) as ORDER_TOTAL_MONEY from TEA_ORDER_INFO a where
-    to_char(a.ORDER_TIME,'yyyy-mm-dd')<'2018-11-01'  and  to_char(a.ORDER_TIME,'yyyy-mm-dd')>'2018-10-30' and a.STORE_NO='D00026' GROUP BY STORE_NO) a,
-    tea_store_info b where a.store_no = b.store_no;-->
-
-    <select id="selectAll" parameterType="com.milktea.milkteashop.vo.AccountRequestVo"  resultMap="BaseResultMap">
-
         select b.cn_store_name as STORE_NAME, a.* from (select STORE_NO as STORE_NO,count(*) as ORDER_COUNT,sum(ORDER_PRICE) as ORDER_TOTAL_MONEY
         from TEA_ORDER_INFO
         <where>
@@ -44,10 +26,17 @@
             <if test="finishTime!=null">
                 and to_char(ORDER_TIME,'yyyy-mm-dd') <![CDATA[ <= ]]> #{finishTime,jdbcType=VARCHAR}
             </if>
-            and PAY_STATUS='1'
+            <if test="storeNo!=null">
+                and STORE_NO =#{storeNo}
+            </if>
+            <if test="payStatus!=null">
+                and PAY_STATUS=#{payStatus}
+            </if>
+            <if test="orderStatus!=null">
+                and ORDER_STATUS=#{orderStatus}
+            </if>
         </where>
         GROUP BY STORE_NO)a,TEA_STORE_INFO b  where a.store_no = b.store_no
-
     </select>
 
 

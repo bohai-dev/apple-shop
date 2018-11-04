@@ -27,10 +27,10 @@ public class AccountMapperTest {
         accountRequestVo.setBeginTime("2018-10-31");
         accountRequestVo.setFinishTime("2018-11-02");
 
-        List<AccountVo> list=accountMapper.selectAll(accountRequestVo);
+     /*   List<AccountVo> list=accountMapper.selectAll(accountRequestVo);
         System.out.println("订单总数"+list.get(0).getOrderCount());
         System.out.println("订单总金额"+list.get(0).getOrderTotalMoney());
-        System.out.println("店铺名称"+list.get(0).getStoreName());
+        System.out.println("店铺名称"+list.get(0).getStoreName());*/
 
     }
 

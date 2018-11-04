@@ -13,6 +13,10 @@ public class AccountRequestVo {
     private String finishTime;
     //店铺编号
     private String storeNo;
+    //支付状态
+    private String  payStatus;
+    //订单状态
+    private String orderStatus;
 
     public String getBeginTime() {
         return beginTime;
@@ -38,12 +42,30 @@ public class AccountRequestVo {
         this.storeNo = storeNo;
     }
 
+    public String getPayStatus() {
+        return payStatus;
+    }
+
+    public void setPayStatus(String payStatus) {
+        this.payStatus = payStatus;
+    }
+
+    public String getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus;
+    }
+
     @Override
     public String toString() {
-        return "AccountVo{" +
+        return "AccountRequestVo{" +
                 "beginTime='" + beginTime + '\'' +
                 ", finishTime='" + finishTime + '\'' +
                 ", storeNo='" + storeNo + '\'' +
+                ", payStatus='" + payStatus + '\'' +
+                ", orderStatus='" + orderStatus + '\'' +
                 '}';
     }
 }

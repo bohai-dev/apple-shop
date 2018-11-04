@@ -12,6 +12,7 @@ public class QueryRejectedRequestVo {
     private String userNo;
     private String handleStatus;   //处理状态，0待处理；1处理中；2处理成功
 
+
     public String getStoreNo() {
         return storeNo;
     }
@@ -52,4 +53,15 @@ public class QueryRejectedRequestVo {
         this.handleStatus = handleStatus;
     }
 
+
+    @Override
+    public String toString() {
+        return "QueryRejectedRequestVo{" +
+                "storeNo='" + storeNo + '\'' +
+                ", storeName='" + storeName + '\'' +
+                ", orderNo='" + orderNo + '\'' +
+                ", userNo='" + userNo + '\'' +
+                ", handleStatus='" + handleStatus + '\'' +
+                '}';
+    }
 }
