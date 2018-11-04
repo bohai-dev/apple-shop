@@ -35,7 +35,7 @@ public class AccountVo {
     private BigDecimal finalMoney;
 
     //结算时间
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8" )
     private Date accountDate;
 
     public String getBeginTime() {
