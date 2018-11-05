@@ -47,6 +47,16 @@ public class TeaOrderInfo {
 
     private Date updateTime;
 
+    //用户收货地址
+    private String postAddress;
+
+    //用户收货电话
+    private String postTel;
+
+    //用户收获名
+    private String postName;
+
+
     public String getOrderNo() {
         return orderNo;
     }
@@ -197,5 +207,29 @@ public class TeaOrderInfo {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public String getPostAddress() {
+        return postAddress;
+    }
+
+    public void setPostAddress(String postAddress) {
+        this.postAddress = postAddress;
+    }
+
+    public String getPostTel() {
+        return postTel;
+    }
+
+    public void setPostTel(String postTel) {
+        this.postTel = postTel;
+    }
+
+    public String getPostName() {
+        return postName;
+    }
+
+    public void setPostName(String postName) {
+        this.postName = postName;
     }
 }

@@ -209,5 +209,24 @@ public class GoodsInfoVo {
         this.classInfos = classInfos;
     }
 
-
+    @Override
+    public String toString() {
+        return "GoodsInfoVo{" +
+                "goodsId='" + goodsId + '\'' +
+                ", storeNo='" + storeNo + '\'' +
+                ", cnGoodsName='" + cnGoodsName + '\'' +
+                ", cnGoodsIntroduction='" + cnGoodsIntroduction + '\'' +
+                ", cnGoodsPictureBig='" + cnGoodsPictureBig + '\'' +
+                ", cnGoodsPictureRound='" + cnGoodsPictureRound + '\'' +
+                ", usGoodsName='" + usGoodsName + '\'' +
+                ", usGoodsIntroduction='" + usGoodsIntroduction + '\'' +
+                ", usGoodsPictureBig='" + usGoodsPictureBig + '\'' +
+                ", usGoodsPictureRound='" + usGoodsPictureRound + '\'' +
+                ", goodsPrice=" + goodsPrice +
+                ", goodsStatus='" + goodsStatus + '\'' +
+                ", goodsStock=" + goodsStock +
+                ", standardList=" + standardList +
+                ", classInfos=" + classInfos +
+                '}';
+    }
 }

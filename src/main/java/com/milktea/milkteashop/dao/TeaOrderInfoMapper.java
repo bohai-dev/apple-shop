@@ -10,7 +10,6 @@ import com.milktea.milkteashop.vo.QueryOrdersRequestVo;
 public interface TeaOrderInfoMapper {
     int deleteByPrimaryKey(String orderNo);
 
-    int insert(TeaOrderInfo record);
 
     int insertSelective(TeaOrderInfo record);
 
@@ -18,7 +17,6 @@ public interface TeaOrderInfoMapper {
 
     int updateByPrimaryKeySelective(TeaOrderInfo record);
 
-    int updateByPrimaryKey(TeaOrderInfo record);
     
     List<TeaOrderInfo> selectByCondition(QueryOrdersRequestVo requestVo);
     

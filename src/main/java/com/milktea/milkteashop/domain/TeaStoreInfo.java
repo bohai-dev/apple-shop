@@ -246,6 +246,34 @@ public class TeaStoreInfo {
     public void setStoreStatus(String storeStatus) {
         this.storeStatus = storeStatus;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "TeaStoreInfo{" +
+                "storeNo='" + storeNo + '\'' +
+                ", cnStoreName='" + cnStoreName + '\'' +
+                ", cnStoreCity='" + cnStoreCity + '\'' +
+                ", cnStoreAddress='" + cnStoreAddress + '\'' +
+                ", cnStorePicture='" + cnStorePicture + '\'' +
+                ", cnStoreIntroduction='" + cnStoreIntroduction + '\'' +
+                ", usStoreName='" + usStoreName + '\'' +
+                ", usStoreCity='" + usStoreCity + '\'' +
+                ", usStoreAddress='" + usStoreAddress + '\'' +
+                ", usStorePicture='" + usStorePicture + '\'' +
+                ", usStoreIntroduction='" + usStoreIntroduction + '\'' +
+                ", longitude=" + longitude +
+                ", latitude=" + latitude +
+                ", storePhone='" + storePhone + '\'' +
+                ", storeUserName='" + storeUserName + '\'' +
+                ", storePasswd='" + storePasswd + '\'' +
+                ", storeStatus='" + storeStatus + '\'' +
+                ", isDefault='" + isDefault + '\'' +
+                ", isSend='" + isSend + '\'' +
+                ", reserveBeginTime='" + reserveBeginTime + '\'' +
+                ", reserveEndTime='" + reserveEndTime + '\'' +
+                ", deleteFlag='" + deleteFlag + '\'' +
+                ", updateTime=" + updateTime +
+                ", logo='" + logo + '\'' +
+                '}';
+    }
 }

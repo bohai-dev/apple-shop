@@ -92,4 +92,19 @@ public class TeaClassInfo {
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
+
+    @Override
+    public String toString() {
+        return "TeaClassInfo{" +
+                "classId='" + classId + '\'' +
+                ", cnClassName='" + cnClassName + '\'' +
+                ", cnClassLogo='" + cnClassLogo + '\'' +
+                ", usClassName='" + usClassName + '\'' +
+                ", usClassLogo='" + usClassLogo + '\'' +
+                ", classType='" + classType + '\'' +
+                ", indexNo=" + indexNo +
+                ", deleteFlag='" + deleteFlag + '\'' +
+                ", updateTime=" + updateTime +
+                '}';
+    }
 }

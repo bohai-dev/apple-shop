@@ -342,9 +342,9 @@ public class GoodsServiceImpl implements GoodsService {
             throw new MilkTeaException(MilkTeaErrorConstant.PARAMETER_REQUIRED);
         }
         
-        if(StringUtils.isBlank(infoVo.getStoreNo())){
+      /*  if(StringUtils.isBlank(infoVo.getStoreNo())){
             throw new MilkTeaException(MilkTeaErrorConstant.STORE_NO_REQUIRED);
-        }
+        }*/
         
         List<TeaGoodsInfo> goodsInfos = null;
         

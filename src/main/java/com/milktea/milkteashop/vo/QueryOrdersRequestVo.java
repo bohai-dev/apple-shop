@@ -27,11 +27,11 @@ public class QueryOrdersRequestVo {
     //支付状态 0:待支付 1:支付成功 2:支付失败
     private String payStatus;
     
-    @JsonFormat(pattern="yyyy-MM-dd")
-    private Date beginDate;
+   // @JsonFormat(pattern="yyyy-MM-dd")
+    private String beginDate;
     
-    @JsonFormat(pattern="yyyy-MM-dd")
-    private Date endDate;
+   // @JsonFormat(pattern="yyyy-MM-dd")
+    private String endDate;
 
     private String storeName;
 
@@ -83,19 +83,19 @@ public class QueryOrdersRequestVo {
         this.storeNo = storeNo;
     }
 
-    public Date getBeginDate() {
+    public String getBeginDate() {
         return beginDate;
     }
 
-    public void setBeginDate(Date beginDate) {
+    public void setBeginDate(String beginDate) {
         this.beginDate = beginDate;
     }
 
-    public Date getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 
@@ -130,5 +130,23 @@ public class QueryOrdersRequestVo {
 
     public void setStoreName(String storeName) {
         this.storeName = storeName;
+    }
+
+    @Override
+    public String toString() {
+        return "QueryOrdersRequestVo{" +
+                "userNo='" + userNo + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", orderNo='" + orderNo + '\'' +
+                ", lang='" + lang + '\'' +
+                ", storeNo='" + storeNo + '\'' +
+                ", promotionId='" + promotionId + '\'' +
+                ", orderType='" + orderType + '\'' +
+                ", orderStatus='" + orderStatus + '\'' +
+                ", payStatus='" + payStatus + '\'' +
+                ", beginDate='" + beginDate + '\'' +
+                ", endDate='" + endDate + '\'' +
+                ", storeName='" + storeName + '\'' +
+                '}';
     }
 }

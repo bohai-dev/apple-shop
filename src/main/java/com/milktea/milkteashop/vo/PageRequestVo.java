@@ -36,5 +36,13 @@ public class PageRequestVo<T> {
     public void setParams(T params) {
         this.params = params;
     }
-    
+
+    @Override
+    public String toString() {
+        return "PageRequestVo{" +
+                "pageNumber=" + pageNumber +
+                ", pageSize=" + pageSize +
+                ", params=" + params +
+                '}';
+    }
 }
