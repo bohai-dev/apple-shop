@@ -33,7 +33,7 @@ public class ScheduledService {
     
     static Logger log = LoggerFactory.getLogger(ScheduledService.class);
     
-    @Scheduled(cron = "0 0/1 * * * *")
+    //@Scheduled(cron = "0 0/1 * * * *")
     public void scheduled(){
         
         QueryOrdersRequestVo requestVo = new QueryOrdersRequestVo();
@@ -57,7 +57,7 @@ public class ScheduledService {
         log.info("=====>>>>>使用cron  {}{}",System.currentTimeMillis(),"每隔一分钟执行");
     }
     
-    @Scheduled(cron = "0 0 0 0/1 * *")
+   // @Scheduled(cron = "0 0 0 0/1 * *")
     public void storeOrder(){
         
         List<TeaStoreInfo> list = this.storeInfoMapper.selectAll();

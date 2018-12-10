@@ -29,6 +29,7 @@ public class ParamLogAspect {
     @Before("webLog()")
     public void doBefore(JoinPoint joinPoint) throws Throwable {
         // 接收到请求，记录请求内容
+        LOGGER.info("接收到请求");
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
 
