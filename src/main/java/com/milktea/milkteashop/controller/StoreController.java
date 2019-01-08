@@ -40,7 +40,7 @@ public class StoreController {
     }
     
     @RequestMapping(value="modifyStoreInfo", method=RequestMethod.POST)
-    public ResponseHeader modifyStoreInfo(@RequestBody TeaStoreInfo storeInfo) throws MilkTeaException{
+    public ResponseHeader modifyStoreInfo(@RequestBody(required = false) TeaStoreInfo storeInfo) throws MilkTeaException{
         
         ResponseHeader header = new ResponseHeader();
         this.storeService.modifyStoreInfo(storeInfo);

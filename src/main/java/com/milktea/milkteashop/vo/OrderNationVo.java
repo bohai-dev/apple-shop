@@ -1,12 +1,12 @@
 package com.milktea.milkteashop.vo;
 
-import java.math.BigDecimal;
-import java.util.Date;
-import java.util.List;
-
+import com.alibaba.fastjson.annotation.JSONField;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
 /**
  * 订单信息
  * @author caojia
@@ -37,8 +37,8 @@ public class OrderNationVo extends MessageType{
     //快递单号
     private String takeNo;
 
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
-    @JSONField (format="yyyy-MM-dd HH:mm:ss")  
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8" )
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date orderTime;
 
     private String orderStatus;
@@ -47,12 +47,12 @@ public class OrderNationVo extends MessageType{
 
     private String orderType;
 
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     @JSONField (format="yyyy-MM-dd HH:mm:ss")
     private Date makeFinishTime;
 
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
-    @JSONField (format="yyyy-MM-dd HH:mm:ss")  
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    @JSONField (format="yyyy-MM-dd HH:mm:ss")
     private Date bookTime;
 
     //用户收货地址

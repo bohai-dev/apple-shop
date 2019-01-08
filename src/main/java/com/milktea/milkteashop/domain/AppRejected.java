@@ -29,17 +29,17 @@ public class AppRejected {
     //处理备注
     private String handleRemark;
     //处理时间
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date handleTime;
     //确认处理成功人
     private String confirmPerson;
     //确认时间
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date confirmTime;
     //物流单号
     private String trackingNo;
     //创建时间
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date createTime;
     //金额
     private BigDecimal price;

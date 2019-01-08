@@ -28,7 +28,7 @@ public class WebsocketConfig implements WebSocketConfigurer, SchedulingConfigure
         //.addInterceptors(new HttpSessionHandshakeInterceptor());
     }
 
-    @Bean()
+    @Bean
     public WebsocketHandler myHandler() {
         return new WebsocketHandler();
     }
