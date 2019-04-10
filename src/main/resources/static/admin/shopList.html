@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html>
+	<head lang="en">
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/public.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" type="text/css" href="css/pagination.css"/>
+	</head>
+
+	<body>
+		<section class="publicMian ">
+			<div class="publicRight">
+				<!--查询按钮-->
+				<div class="location">
+					<strong>你现在所在的位置是:</strong>
+					<span>店铺管理页面</span>
+				</div>
+				<div class="search">
+					<form action="" method="post">
+						<span>店铺编号:<input type="text" name="shopNumber" value=""/></span>
+						<span>店铺名称:<input type="text" name="shopName" value=""/></span>
+						<input type="button" onclick="queryShop(this.form)" value="查询" /></span>
+					</form>
+					<span>新增店铺<a href="shopAdd.html">添加店铺</a></span>
+				</div>
+				<!--查询结果-->
+				<div class="location">
+				</div>
+				<div class="result">
+					<!--选择店铺-->
+					<!--<div class="selectShop">
+						<strong class="currentShop">当前店铺:</strong>
+						<div class="storeName" id="storeName"></div>
+						<button class="changeShop">切换店铺</button>
+					</div>-->
+					<div class="shopListView">
+						<div class="contentView">
+							<table border="1" class="table">
+								<!--<tr class="tableTitle">
+									<th>店铺编号</th><th>店铺名称</th><th>店铺介绍</th><th>店铺管理员用户名</th><th>店铺管理员密码</th><th>店铺电话</th><th>操作</th>
+								</tr>
+								<tr>
+									<td>12</td>
+									<td>000</td>
+									<td></td>
+									<td>15216639047</td>
+									<td>230</td>
+									<td>2018-08-14</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>12</td>
+									<td>000</td>
+									<td></td>
+									<td>15216639047</td>
+									<td>230</td>
+									<td>2018-08-14</td>
+									<td></td>
+								</tr>-->
+							</table>
+						</div>
+						<!--<div class="wrapper">
+							<div class="m-style"></div>
+							<div class="tips">共<span class="totalNumber">0</span>条数据</div>							
+						</div>-->
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--提示框-->
+		<div class="zhezhao"></div>
+		<div class="remove">
+			<div class="removerChid">
+				<h2>提示</h2>
+				<div class="removeMain">
+					<p>成功</p>
+					<!--<a href="#" id="yes">确定</a>-->
+					<a href="#" id="no">确定</a>
+				</div>
+			</div>
+		</div>
+		<!--选择页面-->
+		<div class="zhezhao1"></div>
+		<div class="remove1">
+			<div class="removerChid1">
+				<h2>请选择店铺</h2>
+				<div class="removeMain1">
+					<ul class="selectShopBox">
+						<!--<li class="selectShopList" data-seleteshopno = "201">上海店</li>-->
+					</ul>
+					<!--<a href="#" id="yes">确定</a>-->
+					<a href="#" id="no1">取消</a>
+				</div>
+			</div>
+		</div>
+		<!--删除提示框-->
+		<div class="zhezhao2"></div>
+		<div class="remove2">
+			<div class="removerChid2">
+				<h2>提示</h2>
+				<div class="removeMain2">
+					<p>确定删除此店铺吗？</p>
+					<a href="#" id="yes2" class="shopDeleteBtn">确定</a>
+					<a href="#" id="no2">取消</a>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="js/jquery.js"></script>
+	<script src="js/js.js"></script>
+	<script src="js/shopList.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery.pagination.js" type="text/javascript" charset="utf-8"></script>
+</html>

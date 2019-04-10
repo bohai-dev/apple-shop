@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/public.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<!--主体内容-->
+<section class="publicMian ">
+    <div class="publicRight">
+        <div class="location">
+            <strong>你现在所在的位置是:</strong>
+            <span>店铺选择页面 >> 店铺修改页面</span>
+        </div>
+        <div class="providerAdd">
+            <form action="" id="daform">
+            	<div class="">
+                    <label>店铺编号：</label>
+                    <text class="storeNo"></text>
+                </div>
+                <div class="">
+                    <label for="cnStoreName">店铺名称：</label>
+                    <input type="text" name="cnStoreName" placeholder="请输入店铺名称" id="cnStoreName" value="" required/>
+                    <span>*</span>
+                </div>
+                <div>
+                    <label>店铺介绍：</label>
+                    <textarea rows="5" cols="35" name="cnStoreIntroduction" placeholder="请输入店铺介绍" required></textarea>
+                    <span>*</span>
+                </div>
+                <div class="rowView pr">
+					<label>店铺图片：</label>
+					<div class="shopPhotoUpdata">
+	                    <div style="display: none;">
+		                    <div>
+								<input type="radio" name="myradio" value="local_name"/> 上传文件名字保持本地文件名字
+								<input type="radio" name="myradio" value="random_name" checked=true/> 上传文件名字是随机文件名
+								<br/>
+								上传到指定目录:<input type="text" value="shopImg" id='dirname' size=50>
+							</div>
+							<h4>您所选择的文件列表：</h4>
+	                    </div>
+	                    <div id="ossfile">你的浏览器不支持flash,Silverlight或者HTML5！</div>
+	                    <div id="container">
+							<a id="selectfiles" href="javascript:void(0);" class='btn'>选择文件</a>
+							<a id="postfiles" href="javascript:void(0);" class='btn'>开始上传</a>
+						</div>
+						<pre id="console"></pre>
+                    </div>
+                    <div class="imgTips" style="right: 420px;">提示：请依次上传图片，暂不支持同时上传。如遇上传失败，删除并重新上传即可。</div>
+				</div>
+				<div class="rowView">
+					<label>店铺logo：</label>
+					<div class="shopPhotoUpdata">
+	                    <div style="display: none;">
+		                    <div>
+								<input type="radio" name="myradio1" value="local_name"/> 上传文件名字保持本地文件名字
+								<input type="radio" name="myradio1" value="random_name" checked=true/> 上传文件名字是随机文件名
+								<br/>
+								上传到指定目录:<input type="text" value="shopLogo" id='dirname1' size=50>
+							</div>
+							<h4>您所选择的文件列表：</h4>
+	                    </div>
+	                    <div id="ossfile1">你的浏览器不支持flash,Silverlight或者HTML5！</div>
+	                    <div id="container1">
+							<a id="selectfiles1" href="javascript:void(0);" class='btn'>选择文件</a>
+							<a id="postfiles1" href="javascript:void(0);" class='btn'>开始上传</a>
+						</div>
+						<pre id="console1"></pre>
+                    </div>
+				</div>
+                <div>
+                    <label>店铺管理员用户名：</label>
+                    <input type="text" name="storeUserName" placeholder="请输入店铺管理员用户名" required/>
+                    <span>*</span>
+                </div>
+                <div>
+                    <label>店铺管理员密码：</label>
+                    <input type="password" name="storePasswd" placeholder="请输入店铺管理员密码" required/>
+                    <span>*</span>
+                </div>
+                <div>
+                    <label>店铺电话：</label>
+                    <input type="number" name="storePhone" placeholder="请输入店铺电话" required/>
+                    <span>*</span>
+                </div>
+                <div>
+                    <label>店铺地址：</label>
+                    <input type="text" name="cnStoreAddress" placeholder="请输入店铺地址" required/>
+                    <span >*</span>
+                </div>
+                <div>
+                    <label>店铺纬度：</label>
+                    <input type="number" name="latitude" placeholder="请输入店铺纬度"/>
+                </div>
+                <div>
+                    <label>店铺经度：</label>
+                    <input type="number" name="longitude" placeholder="请输入店铺经度"/>
+                </div>
+                <div class="providerAddBtn">
+                    <input class="saveShopBtn" type="button" value="修改" onclick="modifyShop(this.form)"/>
+                    <input class="saveShopBtn" type="button" value="返回" onclick="history.back(-1)"/>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</section>
+<!--返回按钮-->
+<!--<button class="back" onclick="history.back(-1)">返回</button>-->
+<!--提示框-->
+<div class="zhezhao"></div>
+<div class="remove">
+	<div class="removerChid">
+		<h2>提示</h2>
+		<div class="removeMain">
+			<p>请填写必填内容!</p>
+			<!--<a href="#" id="yes" class="goodsDeleteBtn">确定</a>-->
+			<a href="#" id="no">确定</a>
+		</div>
+	</div>
+</div>
+<!--删除提示框-->
+<div class="zhezhao2"></div>
+<div class="remove2">
+	<div class="removerChid2">
+		<h2>提示</h2>
+		<div class="removeMain2">
+			<p>确定删除此店铺吗？</p>
+			<a href="#" id="yes2" class="shopDeleteBtn">确定</a>
+			<a href="#" id="no2">取消</a>
+		</div>
+	</div>
+</div>
+<script src="js/js.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/shopModify.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="lib/crypto1/crypto/crypto.js"></script>
+<script type="text/javascript" src="lib/crypto1/hmac/hmac.js"></script>
+<script type="text/javascript" src="lib/crypto1/sha1/sha1.js"></script>
+<script type="text/javascript" src="lib/base64.js"></script>
+<script type="text/javascript" src="lib/plupload-2.1.2/js/plupload.full.min.js"></script>
+<script src="js/upload.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/public.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/pagination.css"/>
+</head>
+<body>
+<!--主体内容-->
+    <section class="publicMian ">
+        <div class="publicRight">
+            <div class="location">
+                <strong>你现在所在的位置是:</strong>
+                <span>客户管理页面</span>
+            </div>
+            <div class="searchView">
+            	<div class="search">
+					<form action="" id="customerQurey">
+						<div class="rowView orderView">
+							<span>手机号码：</span>
+							<input type="text" name="telephone" value=""/>
+						</div>
+						<div class="rowView orderView">
+							<span>用户编号：</span>
+							<input type="text" name="userNo" value=""/>
+						</div>
+						<input class="orderQureyBtn" type="button" onclick="queryCustomer(this.form)" value="查询" /></span>
+					</form>
+				</div>
+            </div>
+            <div class="location"></div>
+			<div class="result">
+				<div class="contentView flexJusCen">
+					<div class="flexDirCol">
+						<table border="1" class="table">
+							<!--<tr class="tableTitle">
+								<th>用户编号</th><th>用户名</th><th>微信ID</th><th>电话</th><th>积分</th><th>注册日期</th><th>收货地址</th>
+							</tr>
+							<tr>
+								<td>12</td>
+								<td>000</td>
+								<td></td>
+								<td>15216639047</td>
+								<td>230</td>
+								<td>2018-08-14</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>12</td>
+								<td>000</td>
+								<td></td>
+								<td>15216639047</td>
+								<td>230</td>
+								<td>2018-08-14</td>
+								<td></td>
+							</tr>-->
+						</table>
+						<div class="wrapper">
+							<div class="m-style"></div>
+							<div class="tips">共<span class="totalNumber">0</span>条数据</div>							
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+    </section>
+
+	<!--提示框-->
+	<div class="zhezhao"></div>
+	<div class="remove">
+		<div class="removerChid">
+			<h2>提示</h2>
+			<div class="removeMain">
+				<p>成功</p>
+				<!--<a href="#" id="yes">确定</a>-->
+				<a href="#" id="no">确定</a>
+			</div>
+		</div>
+	</div>
+<script src="js/jquery.js"></script>
+<script src="js/js.js"></script>
+<script src="js/jquery.pagination.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/userInfo.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>

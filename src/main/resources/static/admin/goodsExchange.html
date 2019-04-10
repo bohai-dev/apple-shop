@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/public.css"/>
+	    <link rel="stylesheet" href="css/style.css"/>
+	    <link rel="stylesheet" type="text/css" href="css/pagination.css"/>
+	</head>
+	<body>
+		<!--主体内容-->
+	    <section class="publicMian ">
+	        <div class="publicRight">
+	            <div class="location">
+	                <strong>你现在所在的位置是:</strong>
+	                <span>退换货管理页面</span>
+	            </div>
+	            <div class="searchView">
+	            	<div class="search">
+						<form action="" id="goodsExchangeQurey">
+							<div class="rowView orderView">
+								<span>店铺编号：</span>
+								<input type="text" name="storeNo" value=""/>
+							</div>
+							<div class="rowView orderView">
+								<span>店铺名称：</span>
+								<input type="text" name="storeName" value=""/>
+							</div>
+							<div class="rowView orderView">
+								<span>订单编号：</span>
+								<input type="text" name="orderNumber" value=""/>
+							</div>
+							<div class="rowView orderView">
+								<span>客户编号：</span>
+								<input type="text" name="userNo" value=""/>
+							</div>
+							<div class="rowView orderView">
+								<span>状态：</span>
+								<select name="status">
+									<option value="">所有订单</option>
+									<option value="0">待处理</option>
+									<option value="1">处理中</option>
+									<option value="2">处理成功</option>
+								</select>
+							</div>
+							<input class="goodsExchangeQureyBtn" type="button" onclick="queryGoodsExchange(this.form)" value="查询" /></span>
+						</form>
+					</div>
+	            </div>
+	            <div class="location"></div>
+				<div class="result pr" style="min-height: inherit;">
+					<div class="contentView flexJusCen">
+						<div class="flexDirCol">
+							<table border="1" class="table">
+								<!--<tr class="tableTitle">
+									<th>订单编号</th><th>店铺编号</th><th>店铺名称</th><th>用户编号</th><th>退货理由</th><th>状态</th><th>处理人</th><th>处理时间</th><th>操作</th>
+								</tr>
+								<tr>
+									<td>12</td>
+									<td>000</td>
+									<td></td>
+									<td>15216639047</td>
+									<td>230</td>
+									<td>2018-08-14</td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>12</td>
+									<td>000</td>
+									<td></td>
+									<td>15216639047</td>
+									<td>230</td>
+									<td>2018-08-14</td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>-->
+							</table>
+							<div class="wrapper">
+								<div class="m-style"></div>
+								<div class="tips">共<span class="totalNumber">0</span>条数据</div>							
+							</div>
+						</div>
+						<div class="orderDetail">
+							<table border="1" class="table detailTable">
+								<!--<tr class="tableTitle">
+									<th>订单编号</th><th>用户编号</th><th>手机号</th><th>订单金额</th><th>订单状态</th><th>下单时间</th><th>支付状态</th><th>备注</th>
+								</tr>-->
+							</table>
+						</div>
+					</div>
+				</div>
+	        </div>
+	    </section>
+		<!--修改退换货模态框-->
+		<div class="zhezhao1"></div>
+		<div class="modelView">
+			<div class="modelContainer">
+				<div class="closeBtn">X</div>
+				<form class="classifyFrom" id="modifyGoodsFrom">
+					<div class="rowView">
+						<span>订单编号：</span>
+						<text class="exOrderNo"></text>
+					</div>
+					<div class="rowView">
+						<span>店铺编号：</span>
+						<text class="exStoreNo"></text>
+					</div>
+					<div class="rowView">
+						<span>用户编号：</span>
+						<text class="exUserNo"></text>
+					</div>
+					<div class="rowView">
+						<span>退货理由：</span>
+						<text class="exReason"></text>
+					</div>
+					<div class="rowView">
+						<span>退货图片：</span>
+						<div class="exchangeImg">
+							<!--<img class="goodsExchangeImg" src="img/login_bg.jpg"/>
+							<img class="goodsExchangeImg" src="img/login_bg.jpg"/>
+							<img class="goodsExchangeImg" src="img/login_bg.jpg"/>-->
+						</div>
+					</div>
+					<div class="rowView">
+						<span>状态：</span>
+						<select name="handleStatus">
+							<option value="0">待处理</option>
+							<option value="1">处理中</option>
+							<option value="2">处理成功</option>
+						</select>
+					</div>
+					<div class="exchangeInfo">
+						<div class="rowView">
+							<span>退款金额：</span>
+							<input type="text" name="price" value=""/>
+						</div>
+						<div class="rowView">
+							<span>运单号：</span>
+							<input type="text" name="trackingNo" value=""/>
+						</div>
+						<div class="rowView">
+							<span>处理人：</span>
+							<input type="text" name="handlePerson" value=""/>
+						</div>
+						<div class="rowView">
+							<span>处理备注：</span>
+							<input type="text" name="handleRemark" value=""/>
+						</div>
+						<div class="rowView">
+							<span>确认处理成功人：</span>
+							<input type="text" name="confirmPerson" value=""/>
+						</div>
+					</div>
+					<input class="PostBtn" type="button" value="修改" onclick="goodsExchangeModity(this.form)"/>
+				</form>
+			</div>
+		</div>
+		<!--提示框-->
+		<div class="zhezhao"></div>
+		<div class="remove">
+			<div class="removerChid">
+				<h2>提示</h2>
+				<div class="removeMain">
+					<p>成功</p>
+					<!--<a href="#" id="yes">确定</a>-->
+					<a href="#" id="no">确定</a>
+				</div>
+			</div>
+		</div>
+		<!--查看大图-->
+		<div class="showImg">
+			<img class="showBigImg" src="img/login_bg.jpg" alt="" />
+		</div>
+	</body>
+	<script src="js/jquery.js"></script>
+	<script src="js/js.js"></script>
+	<script src="js/jquery.pagination.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/goodsExchange.js" type="text/javascript" charset="utf-8"></script>
+</html>

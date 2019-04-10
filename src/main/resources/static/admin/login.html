@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>系统登录 - 素匠·泰茶管理系统</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <style type="text/css">
+    	html,body{width: 100%;height: 100%;}
+    </style>
+</head>
+<body class="login_bg">
+    <section class="loginBox">
+        <header class="loginHeader">
+            <h1><!--<img class="loginLogo" src="img/logo.jpg"/>-->后台管理系统</h1>
+        </header>
+        <section class="loginCont">
+            <form class="loginForm" action="">
+                <div class="inputbox">
+                    <label for="user">用户名：</label>
+                    <input id="user" type="text" name="username" placeholder="请输入用户名" required/>
+                    <span class="loginTips">请输入用户名</span>
+                </div>
+                <div class="inputbox">
+                    <label for="mima">密码：</label>
+                    <input id="mima" type="password" name="password" placeholder="请输入密码" required/>
+                    <span class="loginTips">请输入密码</span>
+                </div>
+                <div class="subBtn">
+                    <input class="loginBtn" type="button" value="登陆" onclick="submitFrom(this.form)"/>
+                    <input type="reset" value="重置"/>
+                </div>
+            </form>
+        </section>
+    </section>
+    <!--提示框-->
+	<div class="zhezhao"></div>
+	<div class="remove">
+		<div class="removerChid">
+			<h2>提示</h2>
+			<div class="removeMain">
+				<p>成功</p>
+				<!--<a href="#" id="yes">确定</a>-->
+				<a href="#" id="no">确定</a>
+			</div>
+		</div>
+	</div>
+	<script src="js/js.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/login.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>

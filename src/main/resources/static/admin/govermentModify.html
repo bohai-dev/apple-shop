@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+	<head lang="en">
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/public.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" type="text/css" href="css/pagination.css"/>
+	</head>
+
+	<body>
+		<section class="publicMian ">
+			<div class="publicRight">
+				<div class="location">
+					<strong>你现在所在的位置是:</strong>
+					<span>宣传管理页面 >> 修改宣传</span>
+				</div>
+				<div class="childContainer">
+					<div class="result">
+						<div class="shopListView">
+							<div class="contentView flexJusCen">
+								<div class="flexDirCol">
+									<table border="1" class="table">
+										<!--<tr class="tableTitle">
+											<th>标题</th><th>图片</th><th>内容</th><th>操作</th>
+										</tr>
+										<tr>
+											<td>12</td>
+											<td><img class="govermentImg" src="img/customer.png" alt="" /></td>
+											<td>230</td>
+											<td>修改 删除</td>
+										</tr>
+										<tr>
+											<td>12</td>
+											<td>000</td>
+											<td>230</td>
+											<td>修改 删除</td>
+										</tr>-->
+									</table>
+									<div class="wrapper">
+										<div class="m-style"></div>
+										<div class="tips">共<span class="totalNumber">0</span>条数据</div>							
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--修改宣传模态框-->
+		<div class="zhezhao1"></div>
+		<div class="modelView">
+			<div class="modelContainer">
+				<div class="closeBtn">X</div>
+				<form class="classifyFrom" action="" id="modifyGovermentFrom">
+					<div class="rowView">
+						<span>宣传标题：</span>
+						<input type="text" name="govermentTitle" id="govermentTitle" value="" />
+					</div>
+					<div class="rowView pr">
+						<span>宣传图片：</span>
+						<div class="shopPhotoUpdata">
+							<div style="display: none;">
+								<div>
+									<input type="radio" name="myradio" value="local_name" /> 上传文件名字保持本地文件名字
+									<input type="radio" name="myradio" value="random_name" checked=true/> 上传文件名字是随机文件名
+									<br/> 上传到指定目录:
+									<input type="text" value="propaganda" id='dirname' size=50>
+								</div>
+								<h4>您所选择的文件列表：</h4>
+							</div>
+							<div id="ossfile">你的浏览器不支持flash,Silverlight或者HTML5！</div>
+							<div id="container">
+								<a id="selectfiles" href="javascript:void(0);" class='btn'>选择文件</a>
+								<a id="postfiles" href="javascript:void(0);" class='btn'>开始上传</a>
+							</div>
+							<pre id="console"></pre>
+						</div>
+						<div class="imgTips">提示：如遇上传失败，删除并重新上传即可。</div>
+					</div>
+					<div class="rowView">
+						<span>宣传内容：</span>
+						<textarea style="width: 300px;height: 130px;" cols="30" rows="3" type="text" name="govermentContext" value="" ></textarea>
+					</div>
+					<input class="PostBtn" type="button" value="修改" onclick="govermentModity(this.form)"/>
+				</form>
+			</div>
+		</div>
+		<!--提示框-->
+		<div class="zhezhao"></div>
+		<div class="remove">
+			<div class="removerChid">
+				<h2>提示</h2>
+				<div class="removeMain">
+					<p>成功</p>
+					<!--<a href="#" id="yes">确定</a>-->
+					<a href="#" id="no">确定</a>
+				</div>
+			</div>
+		</div>
+		<!--删除提示框-->
+		<div class="zhezhao2"></div>
+		<div class="remove2">
+			<div class="removerChid2">
+				<h2>提示</h2>
+				<div class="removeMain2">
+					<p>确定删除此宣传吗？</p>
+					<a href="#" id="yes2" class="govermentDeleteBtn">确定</a>
+					<a href="#" id="no2">取消</a>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="js/jquery.js"></script>
+	<script src="js/js.js"></script>
+	<script src="js/jquery.pagination.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/govermentModify.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="lib/crypto1/crypto/crypto.js"></script>
+	<script type="text/javascript" src="lib/crypto1/hmac/hmac.js"></script>
+	<script type="text/javascript" src="lib/crypto1/sha1/sha1.js"></script>
+	<script type="text/javascript" src="lib/base64.js"></script>
+	<script type="text/javascript" src="lib/plupload-2.1.2/js/plupload.full.min.js"></script>
+	<script src="js/upload.js" type="text/javascript" charset="utf-8"></script>
+</html>

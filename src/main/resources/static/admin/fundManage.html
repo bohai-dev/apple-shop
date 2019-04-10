@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/public.css"/>
+	    <link rel="stylesheet" href="css/style.css"/>
+	    <link rel="stylesheet" type="text/css" href="css/pagination.css"/>
+	    <link rel="stylesheet" type="text/css" href="css/lhgcalendar.css"/>
+	    <script src="js/jquery.js"></script>
+	    <script src="js/lhgcore.min.js" type="text/javascript" charset="utf-8"></script>
+	    <script src="js/lhgcalendar.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<!--主体内容-->
+	    <section class="publicMian ">
+	        <div class="publicRight">
+	            <div class="location">
+	                <strong>你现在所在的位置是:</strong>
+	                <span>对账管理页面 >> 结算</span>
+	            </div>
+	            <div class="searchView">
+	            	<div class="search">
+						<form action="" id="fundManageQurey">
+							<div class="rowView orderView">
+								<span>开始日期：</span>
+								<input type="text" id="cal1" name="startTime" readonly="readonly"/>
+							</div>
+							<div class="rowView orderView">
+								<span>结束日期：</span>
+								<input type="text" id="cal2" name="endTime" readonly="readonly"/>
+							</div>
+							<div class="rowView orderView">
+								<span>店铺编号：</span>
+								<input type="text" name="storeNo" value=""/>
+							</div>
+							<input class="fundManageQureyBtn" type="button" onclick="queryFundManage(this.form)" value="查询" /></span>
+						</form>
+					</div>
+	            </div>
+	            <div class="location"></div>
+				<div class="result pr" style="min-height: inherit;">
+					<div class="contentView flexJusCen">
+						<div class="flexDirCol">
+							<table border="1" class="table">
+								<!--<tr class="tableTitle">
+									<th>店铺编号</th><th>店铺名称</th><th>结算周期</th><th>订单总数</th><th>订单总金额</th><th>退换次数</th><th>退换金额</th><th>合计金额</th><th>结算时间</th><th>操作</th>
+								</tr>
+								<tr>
+									<td>12</td>
+									<td>000</td>
+									<td></td>
+									<td>15216639047</td>
+									<td>230</td>
+									<td>2018-08-14</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>12</td>
+									<td>000</td>
+									<td></td>
+									<td>15216639047</td>
+									<td>230</td>
+									<td>2018-08-14</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>-->
+							</table>
+						</div>
+					</div>
+				</div>
+	        </div>
+	    </section>
+		<!--提示框-->
+		<div class="zhezhao"></div>
+		<div class="remove">
+			<div class="removerChid">
+				<h2>提示</h2>
+				<div class="removeMain">
+					<p>成功</p>
+					<!--<a href="#" id="yes">确定</a>-->
+					<a href="#" id="no">确定</a>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="js/js.js"></script>
+	<script src="js/jquery.pagination.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/fundManage.js" type="text/javascript" charset="utf-8"></script>
+</html>

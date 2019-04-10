@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>秦安特产后台管理系统</title>
+    <link rel="stylesheet" href="css/public.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body style="min-width: 900px;">
+<!--头部-->
+<header class="publicHeader">
+    <h1 id="storeName" class="headTitle">后台管理系统</h1>
+    <h1 class="headName">秦安特产</h1>
+    <div class="publicHeaderR">
+        <p><span id="accountName" style="color: #fff21b"> Admin</span> , 欢迎你！</p>
+        <!--<a href="login.html">退出</a>-->
+        <a href="javascript:" id="logOff">退出</a>
+    </div>
+</header>
+<!--时间-->
+<section class="publicTime">
+    <span id="time">2018年1月1日 11:11  星期一</span>
+</section>
+<!--主体内容-->
+<section class="container">
+    <div class="left">
+        <h2 class="leftH2"><span class="span1"></span>功能列表 <span></span></h2>
+        <nav>
+            <ul class="list">
+                <li class="activeBg active"><a class="navList" target="Conframe" href="shopList.html">店铺管理</a></li>
+                <li class="activeBg"><a class="navList" target="Conframe" href="goodsClassify.html">分类管理</a></li>
+                <!--<li class="activeBg"><a class="navList" target="Conframe" href="goodsAttribute.html">辅料管理</a></li>-->
+                <li>
+                	<a class="shopManage" href="javascript:">商品管理</a>
+                	<ul class="shopManageChildListbox">
+                		<li class="shopManageChildList activeBg"><a class="navList" target="Conframe" href="goodsAdd.html">新增商品</a></li>
+                		<li class="shopManageChildList activeBg"><a class="navList" target="Conframe" href="goodsModify.html">商品信息</a></li>
+
+                	</ul>
+                </li>
+                <li class="activeBg">
+                	<a class="userManage" target="Conframe" href="userInfo.html">客户管理</a>
+                	<!--<ul class="userManageChildListbox">
+                		<li class="userManageChildList activeBg"><a class="navList" target="Conframe" href="userInfo.html">客户基础信息查询</a></li>
+                		<li class="userManageChildList activeBg"><a class="navList" target="Conframe" href="userView.html">客户明细查询</a></li>
+                	</ul>-->
+                </li>
+                <li class="activeBg"><a class="navList" target="Conframe" href="orderQuery.html">订单管理</a></li>
+                <!--<li class="activeBg"><a class="navList promotion" target="Conframe" href="promotion.html">优惠活动</a></li>-->
+                <li class="activeBg"><a class="navList" target="Conframe" href="goodsExchange.html">退换货管理</a></li>
+                <li >
+                	<a class="adShow" href="javascript:">广告管理</a>
+                	<ul class="adShowChildListbox">
+                		<li class="adShowChildList activeBg"><a class="navList" target="Conframe" href="adView.html">轮播图管理</a></li>
+                	</ul>
+                </li>
+                <li >
+                	<a class="fundManage" href="javascript:">对账管理</a>
+                	<ul class="fundManageChildListbox">
+                		<li class="fundManageChildList activeBg"><a class="navList" target="Conframe" href="fundManage.html">结算</a></li>
+                	</ul>
+                </li>
+                <!--<li class="activeBg"><a class="navList" target="Conframe" href="backstage.html">后台管理</a></li>-->
+                <li >
+                	<a class="govermentManage" href="javascript:">宣传管理</a>
+                	<ul class="govermentManageChildListbox">
+                		<li class="govermentManageChildList activeBg"><a class="navList" target="Conframe" href="govermentAdd.html">新增宣传</a></li>
+                		<li class="govermentManageChildList activeBg"><a class="navList" target="Conframe" href="govermentModify.html">修改宣传</a></li>
+                	</ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="right">
+        <iframe name="Conframe" src="shopList.html" id="Conframe"></iframe>
+    </div>
+</section>
+<footer class="footer">
+</footer>
+<script src="js/time.js"></script>
+<script src="js/js.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/home.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head lang="en">
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/public.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<!--主体内容-->
+		<section class="publicMian ">
+			<div class="publicRight">
+				<div class="location">
+					<strong>你现在所在的位置是:</strong>
+					<span>商品管理页面 >> 新增商品</span>
+				</div>
+				<div class="childContainer">
+					<div class="childBottom">
+						<div class="childContent df">
+							<form class="classifyFrom" action="" id="addGoodsFrom">
+								<div class="rowView">
+									<span>商品名称：</span>
+									<input type="text" name="chinaName" id="chinaName" value="" />
+								</div>
+								<div class="rowView pr">
+									<span>商品图片：</span>
+									<div class="shopPhotoUpdata">
+					                    <div style="display: none;">
+						                    <div>
+												<input type="radio" name="myradio" value="local_name"/> 上传文件名字保持本地文件名字
+												<input type="radio" name="myradio" value="random_name" checked=true/> 上传文件名字是随机文件名
+												<br/>
+												上传到指定目录:<input type="text" value="goodsImg" id='dirname' size=50>
+											</div>
+											<h4>您所选择的文件列表：</h4>
+					                    </div>
+					                    <div id="ossfile">你的浏览器不支持flash,Silverlight或者HTML5！</div>
+					                    <div id="container">
+											<a id="selectfiles" href="javascript:void(0);" class='btn'>选择文件</a>
+											<a id="postfiles" href="javascript:void(0);" class='btn'>开始上传</a>
+										</div>
+										<pre id="console"></pre>
+				                    </div>
+				                    <div class="imgTips">提示：如遇上传失败，删除并重新上传即可。</div>
+								</div>
+								<div class="rowView">
+									<span>商品简介：</span>
+									<textarea cols="30" rows="3" type="text" name="chinaDescription" value="" ></textarea>
+								</div>
+								<div class="rowView">
+									<span>所属店铺：</span>
+									<select name="storeNo">
+										<!--<option value="1">测试店</option>
+										<option value="0">测试2店</option>-->
+									</select>
+								</div>
+								<div class="rowView">
+									<span>商品状态：</span>
+									<select name="goodsStatus">
+										<option value="1">在售</option>
+										<option value="0">不在售</option>
+									</select>
+								</div>
+								<div class="rowView">
+									<span>商品分类：</span>
+									<select name="classList">
+										<!--<option value="1">分类</option>
+										<option value="0">苹果</option>-->
+									</select>
+								</div>
+								<div class="rowView jusCen">
+									<table border="1" class="table">
+										<tr>
+											<th colspan="6">商品规格</th>
+										</tr>
+										<tr class="tableTitle">
+											<th>规格名称</th><th>规格描述</th><th>价格</th><th>库存</th><th>默认显示规格</th><th>操作</th>
+										</tr>
+										<!--<tr>
+											<td>斤</td>
+											<td>一斤为单位</td>
+											<td>8</td>
+											<td>999</td>
+											<td>是</td>
+											<td><span class="modifyShop">修改</span><span class="deleteShop deleteBtn2">删除</span></td>
+										</tr>-->
+										<tr>
+											<th colspan="6"><button class="specBtn" type="button">添加规格</button></th>
+										</tr>
+									</table>
+								</div>
+								<input class="PostBtn" type="button" value="保存" onclick="addGoodsFrom(this.form)"/>
+							</form>
+						</div>
+					</div>
+		        </div>
+			</div>
+		</section>
+		<!--提示框-->
+		<div class="zhezhao"></div>
+		<div class="remove">
+			<div class="removerChid">
+				<h2>提示</h2>
+				<div class="removeMain">
+					<p>成功</p>
+					<!--<a href="#" id="yes">确定</a>-->
+					<a href="#" id="no">确定</a>
+				</div>
+			</div>
+		</div>
+		<!--删除提示框-->
+		<div class="zhezhao2"></div>
+		<div class="remove2">
+			<div class="removerChid2">
+				<h2>提示</h2>
+				<div class="removeMain2">
+					<p>确定删除此商品规格吗？</p>
+					<a href="#" id="yes2" class="specDeleteBtn">确定</a>
+					<a href="#" id="no2">取消</a>
+				</div>
+			</div>
+		</div>
+		<!--模态框-->
+		<div class="zhezhao3"></div>
+		<!--添加规格-->
+		<div class="remove3">
+			<div class="removerChid">
+				<div class="removeMain">
+					<div class="rowView">
+						<span>规格名称：</span>
+						<input type="text" placeholder="必输" name="specName" value="" />
+					</div>
+					<div class="rowView">
+						<span>规格描述：</span>
+						<input type="text" name="specDescripti" value="" />
+					</div>
+					<div class="rowView">
+						<span>规格价格：</span>
+						<input type="text" placeholder="必输" name="specPrice" value="" />
+					</div>
+					<div class="rowView">
+						<span>库存：</span>
+						<input type="text" placeholder="必输" name="specStock" value="" />
+					</div>
+					<div class="rowView">
+						<span>是否默认：</span>
+						<select name="specStatus">
+							<option value="0">否</option>
+							<option value="1">是</option>
+						</select>
+					</div>
+					<a href="#" id="yes" class="addSpec">添加</a>
+					<a href="#" id="no3">取消</a>
+				</div>
+			</div>
+		</div>
+		<!--修改规格-->
+		<div class="remove4">
+			<div class="removerChid">
+				<div class="removeMain">
+					<div class="rowView">
+						<span>规格名称：</span>
+						<input type="text" name="specName" value="" />
+					</div>
+					<div class="rowView">
+						<span>规格描述：</span>
+						<input type="text" name="specDescripti" value="" />
+					</div>
+					<div class="rowView">
+						<span>规格价格：</span>
+						<input type="text" name="specPrice" value="" />
+					</div>
+					<div class="rowView">
+						<span>库存：</span>
+						<input type="text" name="specStock" value="" />
+					</div>
+					<div class="rowView">
+						<span>是否默认：</span>
+						<select name="specStatus">
+							<option value="0">否</option>
+							<option value="1">是</option>
+						</select>
+					</div>
+					<a href="#" id="yes" class="modifySpecBtn">修改</a>
+					<a href="#" id="no4">取消</a>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="js/js.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/goodsAdd.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="lib/crypto1/crypto/crypto.js"></script>
+	<script type="text/javascript" src="lib/crypto1/hmac/hmac.js"></script>
+	<script type="text/javascript" src="lib/crypto1/sha1/sha1.js"></script>
+	<script type="text/javascript" src="lib/base64.js"></script>
+	<script type="text/javascript" src="lib/plupload-2.1.2/js/plupload.full.min.js"></script>
+	<script src="js/upload.js" type="text/javascript" charset="utf-8"></script>
+</html>
