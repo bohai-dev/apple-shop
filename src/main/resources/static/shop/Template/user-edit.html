@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../Styles/public.css"/>
+    <link rel="stylesheet" href="../Styles/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../Styles/pagination.css"/>
+</head>
+<body>
+<!--主体内容-->
+    <section class="publicMian ">
+        <div class="publicRight">
+            <div class="location">
+                <strong>你现在所在的位置是:</strong>
+                <span>客户管理页面</span>
+            </div>
+            <div class="orderControl userControl">
+            	<div class="search">
+					<form action="" id="customerQurey">
+						<div class="rowView orderView">
+							<span>手机号码：</span>
+							<input type="text" name="telephone" value=""/>
+						</div>
+						<div class="rowView orderView">
+							<span>用户编号：</span>
+							<input type="text" name="userNo" value=""/>
+						</div>
+                        <div class="totalView">共<span class=
+                            "totalNumber">0</span>条数据</div>
+						<input class="orderQureyBtn" type="button" onclick="queryCustomer(this.form)" value="查询" /></span>
+					</form>
+				</div>
+				<div class="contentView">
+					<ul class="detailView">
+						<!--<li class="detailViewList">
+							<div class="orderDetail">
+								<div class="detailBox">
+									<div class="detailName">用户编号</div>
+									<div class="detailData">46468468468</div>
+								</div>
+								<div class="detailBox">
+									<div class="detailName">用户名</div>
+									<div class="detailData">46</div>
+								</div>
+								<div class="detailBox">
+									<div class="detailName">微信ID</div>
+									<div class="detailData">4</div>
+								</div>
+								<div class="detailBox">
+									<div class="detailName">电话</div>
+									<div class="detailData">46</div>
+								</div>
+								<div class="detailBox">
+									<div class="detailName">积分</div>
+									<div class="detailData">1</div>
+								</div>
+								<div class="detailBox">
+									<div class="detailName">注册日期</div>
+									<div class="detailData">46468468468</div>
+								</div>
+								<div class="detailBox">
+									<div class="detailName">收货地址</div>
+									<div class="detailData">46468468468</div>
+								</div>
+							</div>
+						</li>-->
+					</ul>
+					<table border="1" class="table">
+						<!--<tr class="tableTitle">
+							<th>用户编号</th><th>用户名</th><th>微信ID</th><th>电话</th><th>积分</th><th>注册日期</th><th>收货地址</th>
+						</tr>
+						<tr>
+							<td>12</td>
+							<td>000</td>
+							<td></td>
+							<td>15216639047</td>
+							<td>230</td>
+							<td>2018-08-14</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>12</td>
+							<td>000</td>
+							<td></td>
+							<td>15216639047</td>
+							<td>230</td>
+							<td>2018-08-14</td>
+							<td></td>
+						</tr>-->
+					</table>
+				</div>
+            	<div class="m-style"></div>
+            </div>
+        </div>
+    </section>
+
+	<!--提示框-->
+	<div class="zhezhao"></div>
+	<div class="remove">
+		<div class="removerChid">
+			<h2>提示</h2>
+			<div class="removeMain">
+				<p>成功</p>
+				<!--<a href="#" id="yes">确定</a>-->
+				<a href="#" id="no">确定</a>
+			</div>
+		</div>
+	</div>
+<script src="../Scripts/jquery-1.7.2.js"></script>
+<script src="../Scripts/js.js"></script>
+<script src="../Scripts/jquery.pagination.js" type="text/javascript" charset="utf-8"></script>
+<script src="../Scripts/userInfo.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>

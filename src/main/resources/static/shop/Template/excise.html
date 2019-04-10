@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #box{
+        width:500px;
+        height: 400px;
+        background:lightgoldenrodyellow;
+        border:1px solid black;
+    }
+    #head_list h4{
+        float:left;
+        width:33%;
+    }
+    .active{
+        color: cornflowerblue;
+    }
+</style>
+  <script>
+    var hs = document.getElementsByTagName("h4");
+    var divs = document.getElementsByClassName("content");
+    function tabChange(index) {
+      // console.log(index);
+      for(var i=0;i<hs.length;i++) {
+        if(hs[i] == index) {
+          hs[i].className = "active";
+          divs[i].style.display = "block";
+        } else {
+          hs[i].className = " ";
+          divs[i].style.display = "none";
+        }
+      }
+    }
+  </script>
+
+</head>
+
+<body>
+  <div id="box">
+    <div id="head_list"">
+        <h4 onmouseover="tabChange(this)">第一个</h4>
+        <h4 onmouseover="tabChange(this)">第二个</h4>
+        <h4 onmouseover="tabChange(this)">第三个</h4>
+  </div>
+  <div id="menu_content">
+    <div class="content" style="display:block;">Hello,I am the first!</div>
+    <div class="content" style="display:none;">Hello,I am the seconed!</div>
+    <div class="content" style="display:none;">Hello,I am the third!</div>
+  </div>
+  </div>
+
+</body>
+
+</html>

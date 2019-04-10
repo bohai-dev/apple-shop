@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <!-- <meta http-equiv="Access-Control-Allow-Origin" content="http://47.89.247.54:8081"> -->
+    <title>后台管理系统</title>
+    <link rel="stylesheet" type="text/css" href="Styles/admin-all.css" />
+    <link rel="stylesheet" type="text/css" href="Styles/base.css" />
+    <link rel="stylesheet" type="text/css" href="Styles/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="Styles/ui-lightness/jquery-ui-1.8.22.custom.css" />
+    <script type="text/javascript" src="Scripts/jquery-1.7.2.js"></script>
+    <script type="text/javascript" src="Scripts/jquery-ui-1.8.22.custom.min.js"></script>
+    <script type="text/javascript" src="Scripts/index.js"></script>
+    <script type="text/javascript" src="Scripts/storeName.js"></script>
+</head>
+
+<body>
+    <div class="warp">
+        <!--头部开始-->
+        <div class="top_c">
+            <div class="store-name">
+                <!-- <span style="width:70px;height: 70px;line-height: 70px;margin-right: 1em">
+                    <img src="./img/logo3.jpg"alt="" style="width:70px;height:70px;line-height:70px">
+                </span> -->
+                <span id="store"></span>
+            </div>
+            <div class="top-nav">欢迎登陆!&nbsp;<span id="userName"></span>&nbsp;
+                <!-- <a href="#">修改密码</a>| -->
+                <a href="login.html">安全退出</a>
+            </div>
+        </div>
+        <!--头部结束-->
+        <!--左边菜单开始-->
+        <div class="left_c left">
+            <h1>系统操作菜单</h1>
+            <div class="acc">
+                <div>
+                    <a class="one" target="Conframe" href="Template/order-show.html" style="background-color:#F7C94F">首页</a>
+                </div>
+                <div>
+                    <a class="one" target="Conframe" href="Template/goods-manage.html">网上商品管理</a>
+                </div>
+                <div>
+                    <a class="one" target="Conframe" href="Template/order-query.html">下单查询(订单管理)</a>
+                </div>
+                <!-- <div>
+                    <a class="one" target="Conframe" href="Template/preorder-query.html">预约查询</a>
+                </div> -->
+                <div>
+                    <a class="one" target="Conframe" href="Template/user-edit.html">用户管理</a>
+                </div>
+                <div>
+                    <a class="one" target="Conframe" href="Template/adView.html">店铺轮播图管理</a>
+                </div>
+                <div>
+                    <a class="one" target="Conframe" href="Template/exchange.html">退/换货管理</a>
+                </div>
+                <div>
+                    <a class="one" target="Conframe" href="Template/fund-manage.html">对账管理</a>
+                </div>
+                <div id="datepicker"></div>
+            </div>
+
+        </div>
+        <!--左边菜单结束-->
+
+        <!--右边框架开始-->
+        <div class="right_c">
+            <div class="nav-tip" onclick="javascript:void(0)">&nbsp;</div>
+        </div>
+        <div class="Conframe">
+            <iframe name="Conframe" id="Conframe" src="Template/order-show.html"></iframe>
+        </div>
+        <!--右边框架结束-->
+
+        <!--底部开始-->
+        <div class="bottom_c">Copyright &copy;乔升信息科技有限公司 版权所有</div>
+        <!--底部结束-->
+    </div>
+</body>
+
+</html>

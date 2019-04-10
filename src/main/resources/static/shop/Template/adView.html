@@ -1,0 +1,187 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../Styles/public.css"/>
+    <link rel="stylesheet" href="../Styles/style.css"/>
+</head>
+<body>
+<!--主体内容-->
+<section class="publicMian ">
+    <div class="publicRight">
+        <!-- <div class="location">
+            <strong>你现在所在的位置是:</strong>
+            <span>广告添加页面 >> 轮播图管理</span>
+        </div> -->
+        <div class="childTop">
+			<ul class="childClassify">
+				<li class="childClassifyList active">添加轮播图</li>
+				<li class="childClassifyList bannerModify">查看并修改轮播图</li>
+			</ul>
+		</div>
+		<div class="childBottom adView">
+			<div class="childContent df">
+				<form class="classifyFrom" action="" id="addAdvertisement">
+					<div class="rowView pr">
+						<span>上传轮播图片：</span>
+						<div class="shopPhotoUpdata">
+		                    <div style="display: none;">
+			                    <div>
+									<input type="radio" name="myradio" value="local_name"/> 上传文件名字保持本地文件名字
+									<input type="radio" name="myradio" value="random_name" checked=true/> 上传文件名字是随机文件名
+									<br/>
+									上传到指定目录:<input type="text" value="banner" id='dirname' size=50>
+								</div>
+								<h4>您所选择的文件列表：</h4>
+		                    </div>
+		                    <div id="ossfile">你的浏览器不支持flash,Silverlight或者HTML5！</div>
+		                    <div id="container">
+								<a id="selectfiles" href="javascript:void(0);" class='btn'>选择文件</a>
+								<a id="postfiles" href="javascript:void(0);" class='btn'>开始上传</a>
+							</div>
+							<pre id="console"></pre>
+	                    </div>
+	                    <div class="imgTips">提示：请依次上传图片，暂不支持同时上传。如遇上传失败，删除并重新上传即可。</div>
+					</div>
+					<!-- <div class="rowView">
+						<span>上传轮播图片(英文)：</span>
+						<div class="shopPhotoUpdata">
+		                    <div style="display: none;">
+			                    <div>
+									<input type="radio" name="myradio1" value="local_name"/> 上传文件名字保持本地文件名字
+									<input type="radio" name="myradio1" value="random_name" checked=true/> 上传文件名字是随机文件名
+									<br/>
+									上传到指定目录:<input type="text" value="banner/us" id='dirname1' size=50>
+								</div>
+								<h4>您所选择的文件列表：</h4>
+		                    </div>
+		                    <div id="ossfile1">你的浏览器不支持flash,Silverlight或者HTML5！</div>
+		                    <div id="container1">
+								<a id="selectfiles1" href="javascript:void(0);" class='btn'>选择文件</a>
+								<a id="postfiles1" href="javascript:void(0);" class='btn'>开始上传</a>
+							</div>
+							<pre id="console1"></pre>
+	                    </div>
+					</div> -->
+					<div class="rowView">
+						<span>顺序：</span>
+						<select name="indexNo">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+						</select>
+					</div>
+					<input class="PostBtn" type="button" value="保存" onclick="bannerFrom(this.form)"/>
+				</form>
+			</div>
+			<div class="childContent">
+				<div class="childLeft">
+					<ul class="figureModify">
+						<!--<li class="figureModifyList active">轮播图片1</li>
+						<li class="figureModifyList">轮播图片2</li>-->
+					</ul>
+				</div>
+				<div class="childRight">
+					<form class="classifyFrom" action="">
+						<div class="rowView pr">
+							<span>上传轮播图片：</span>
+							<div class="shopPhotoUpdata">
+			                    <div style="display: none;">
+				                    <div>
+										<input type="radio" name="myradio2" value="local_name"/> 上传文件名字保持本地文件名字
+										<input type="radio" name="myradio2" value="random_name" checked=true/> 上传文件名字是随机文件名
+										<br/>
+										上传到指定目录:<input type="text" value="banner/cn" id='dirname2' size=50>
+									</div>
+									<h4>您所选择的文件列表：</h4>
+			                    </div>
+			                    <div id="ossfile2">你的浏览器不支持flash,Silverlight或者HTML5！</div>
+			                    <div id="container2">
+									<a id="selectfiles2" href="javascript:void(0);" class='btn'>选择文件</a>
+									<a id="postfiles2" href="javascript:void(0);" class='btn'>开始上传</a>
+								</div>
+								<pre id="console2"></pre>
+		                    </div>
+		                    <div class="imgTips">提示：请依次上传图片，暂不支持同时上传。如遇上传失败，删除并重新上传即可。</div>
+						</div>
+						<!-- <div class="rowView">
+							<span>上传轮播图片(英文)：</span>
+							<div class="shopPhotoUpdata">
+			                    <div style="display: none;">
+				                    <div>
+										<input type="radio" name="myradio3" value="local_name"/> 上传文件名字保持本地文件名字
+										<input type="radio" name="myradio3" value="random_name" checked=true/> 上传文件名字是随机文件名
+										<br/>
+										上传到指定目录:<input type="text" value="banner/us" id='dirname3' size=50>
+									</div>
+									<h4>您所选择的文件列表：</h4>
+			                    </div>
+			                    <div id="ossfile3">你的浏览器不支持flash,Silverlight或者HTML5！</div>
+			                    <div id="container3">
+									<a id="selectfiles3" href="javascript:void(0);" class='btn'>选择文件</a>
+									<a id="postfiles3" href="javascript:void(0);" class='btn'>开始上传</a>
+								</div>
+								<pre id="console3"></pre>
+		                    </div>
+						</div> -->
+						<div class="rowView">
+							<span>顺序：</span>
+							<select name="indexNo">
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+							</select>
+						</div>
+						<div class="rowView">
+							<input class="PostBtn" type="button" value="修改" onclick="adModity(this.form)"/>
+							<input class="DeleteBtn" type="button" value="删除"/>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+    </div>
+</section>
+<!--提示框-->
+<div class="zhezhao"></div>
+<div class="remove">
+	<div class="removerChid">
+		<h2>提示</h2>
+		<div class="removeMain">
+			<p>成功</p>
+			<!--<a href="#" id="yes">确定</a>-->
+			<a href="#" id="no">确定</a>
+		</div>
+	</div>
+</div>
+<!--删除提示框-->
+<div class="zhezhao2"></div>
+<div class="remove2">
+	<div class="removerChid2">
+		<h2>提示</h2>
+		<div class="removeMain2">
+			<p>确定删除此轮播图吗？</p>
+			<a href="#" id="yes2" class="figureDeleteBtn">确定</a>
+			<a href="#" id="no2">取消</a>
+		</div>
+	</div>
+</div>
+<script src="../Scripts/jquery-1.7.2.js" type="text/javascript" charset="utf-8"></script>
+<script src="../Scripts/js.js" type="text/javascript" charset="utf-8"></script>
+<script src="../Scripts/ad.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="../lib/crypto1/crypto/crypto.js"></script>
+<script type="text/javascript" src="../lib/crypto1/hmac/hmac.js"></script>
+<script type="text/javascript" src="../lib/crypto1/sha1/sha1.js"></script>
+<script type="text/javascript" src="../lib/base64.js"></script>
+<script type="text/javascript" src="../lib/plupload-2.1.2/js/plupload.full.min.js"></script>
+<script src="../Scripts/goods-edit/upload.js" type="text/javascript" charset="utf-8"></script>
+<script src="../Scripts/goods-edit/upload1.js" type="text/javascript" charset="utf-8"></script>
+<script src="../Scripts/goods-edit/upload2.js" type="text/javascript" charset="utf-8"></script>
+<script src="../Scripts/goods-edit/upload3.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>

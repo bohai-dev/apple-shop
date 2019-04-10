@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+	<head lang="en">
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../Styles/public.css" />
+		<link rel="stylesheet" href="../Styles/style.css" />
+		<link rel="stylesheet" type="text/css" href="../Styles/formui.css" />
+		<link rel="stylesheet" type="text/css" href="../Styles/base.css" />
+		<script src="../Scripts/jquery-1.7.2.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../Scripts/jquery-ui-1.8.22.custom.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="../Styles/ui-lightness/jquery-ui-1.8.22.custom.css" /> 
+		<style>
+			img {
+				width: 170px;
+				height: 106px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--主体内容-->
+		<section class="publicMian ">
+			<div class="publicRight">
+				<div class="location">
+					<strong>你现在所在的位置是:</strong>
+					<span>商品管理页面 >> 修改商品</span>
+					<span onclick="history.back(-1)" style="color:blue;text-decoration:underline;margin-left:20px;font-size:14px;cursor:pointer;">返回上一层</span>
+				</div>
+				<div class="childContainer">
+					<div class="childBottom">
+						<div class="childContent df">
+							<!-- <div class="childLeft">
+								<ul class="goodsModify"> -->
+									<!--<li class="goodsModifyList active">金桔柠檬</li>
+									<li class="goodsModifyList">百香果绿茶</li>-->
+								<!-- </ul>
+							</div> -->
+							<div class="childRight goodsModifyContainer">
+								<form class="classifyFrom" action="">
+									<div class="rowView">
+										<span>商品名称：</span>
+										<input type="text" name="chinaName" id="chinaName" value="" />
+									</div>
+									<div class="rowView pr">
+										<span>商品图片：</span>
+										<div class="shopPhotoUpdata">
+						                    <div style="display: none;">
+							                    <div>
+													<input type="radio" name="myradio" value="local_name"/> 上传文件名字保持本地文件名字
+													<input type="radio" name="myradio" value="random_name" checked=true/> 上传文件名字是随机文件名
+													<br/>
+													上传到指定目录:<input type="text" value="goodsImg" id='dirname' size=50>
+												</div>
+												<h4>您所选择的文件列表：</h4>
+						                    </div>
+						                    <div id="ossfile">你的浏览器不支持flash,Silverlight或者HTML5！</div>
+						                    <div id="container">
+												<a id="selectfiles" href="javascript:void(0);" class='btn'>选择文件</a>
+												<a id="postfiles" href="javascript:void(0);" class='btn'>开始上传</a>
+											</div>
+											<pre id="console"></pre>
+					                    </div>
+					                    <div class="imgTips">提示：请依次上传图片，暂不支持同时上传。如遇上传失败，删除并重新上传即可。</div>
+									</div>
+									
+									<div class="rowView">
+										<span>商品介绍：</span>
+										<textarea cols="30" rows="3" type="text" name="chinaDescription" value="" ></textarea>
+									</div>
+									<div class="rowView">
+										<span>商品状态：</span>
+										<select name="goodsStatus">
+											<option value="1">在售</option>
+											<option value="0">不在售</option>
+										</select>
+									</div>
+									<div class="rowView borderMarB">
+										<span>所属分类：</span>
+										<div class="rowViewRight">
+											<select class="be-classify" name="be-classify" id="classify">
+											</select>
+										</div>
+									</div>
+									<div class="rowView borderMarB" style="border-top:1px solid #ccc">
+										<span style="text-align: center">商品规格：</span>
+									</div>
+									<div class="rowView" style="margin-top:-30px;">
+										<div id="goods-show" style="margin:0 auto">
+											<table class="tb" id="list">
+												<tr>
+													<th>规格名称</th>
+													<th>规格描述</th>
+													<th>价格</th>
+													<th>库存</th>
+													<th>是否默认</th>
+													<th>操作</th>
+												</tr>
+												<tbody id="guigeAdd">
+												</tbody>
+											</table>
+										</div>
+									</div>
+									<div class="rowView">
+										<input class="PostBtn" type="button" value="确认修改" onclick="goodsModity(this.form)"/>
+										<!-- <input class="DeleteBtn" type="button" value="删除"/> -->
+									</div>
+								</form>
+								<div class="dialog" id="dialog">
+									<form class="classifyFrom" action="" id="addGoodsFrom">
+										<div class="rowView">
+											<span style="width:145px;text-align:right">规格名称：</span>
+											<input type="text" name="guigeName" id="guigeName" value="" />
+										</div>
+										<div class="rowView">
+											<span style="width:145px;text-align:right">规格描述：</span>
+											<input type="text" name="guigeDesc" id="guigeDesc" value="" />
+										</div>
+										<div class="rowView">
+											<span style="width:145px;text-align:right">规格价格：</span>
+											<input type="text" name="guigePrice" id="guigePrice" value="" />
+										</div>
+										<div class="rowView">
+											<span style="width:145px;text-align:right">库存：</span>
+											<input type="text" name="guigeStock" id="guigeStock" value="" />
+										</div>
+										<div class="rowView">
+											<span style="width:145px;text-align:right">设置为默认：</span>
+											<select name="moren" id="moren">
+												<option value="0">否</option>
+												<option value="1">是</option>
+											</select>
+										</div>
+									</form>
+								</div>
+								<!-- <div class="dialog" id="dialog1">
+									<div>确定删除此规格？</div>
+								</div> -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--提示框-->
+		<div class="zhezhao"></div>
+		<div class="remove">
+			<div class="removerChid">
+				<h2>提示</h2>
+				<div class="removeMain">
+					<p>成功</p>
+					<!--<a href="#" id="yes">确定</a>-->
+					<a href="#" id="no">确定</a>
+				</div>
+			</div>
+		</div>
+		<script src="../Scripts/js.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../Scripts/goods-edit/goods-edit.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../lib/crypto1/crypto/crypto.js"></script>
+		<script type="text/javascript" src="../lib/crypto1/hmac/hmac.js"></script>
+		<script type="text/javascript" src="../lib/crypto1/sha1/sha1.js"></script>
+		<script type="text/javascript" src="../lib/base64.js"></script>
+		<script type="text/javascript" src="../lib/plupload-2.1.2/js/plupload.full.min.js"></script>
+		<script src="../Scripts/goods-edit/upload.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../Scripts/goods-edit/upload1.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../Scripts/goods-edit/upload2.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../Scripts/goods-edit/upload3.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>

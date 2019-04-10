@@ -1,0 +1,263 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>订单查询</title>
+	<link rel="stylesheet" type="text/css" href="../Styles/lhgcalendar.css" />
+	<link rel="stylesheet" type="text/css" href="../Styles/formui.css" />
+	<link rel="stylesheet" type="text/css" href="../Styles/base.css" />
+	<link rel="stylesheet" type="text/css" href="../Styles/pagination.css" />
+	<script type="text/javascript" src="../Scripts/jquery-1.7.2.js"></script>
+	<script type="text/javascript" src="../Scripts/jquery-ui-1.8.22.custom.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../Styles/ui-lightness/jquery-ui-1.8.22.custom.css" />
+	<style>
+		.runcode {
+			border: 1px solid #ddd;
+			background: url(../img/iconDate.gif) center right no-repeat #f7f7f7;
+			cursor: pointer;
+			font: 12px tahoma, arial;
+			height: 21px;
+			width: 150px;
+		}
+		.query-top {
+			display: inline-block;
+		}
+		.top-right,.money-count {
+			display: inline-block;
+			margin-left: 3em;
+		}
+		#cal2 {
+			margin-left: 10px;
+		}
+		.store-number {
+			margin-left: 20px;
+		}
+		#search {
+			width: 4em;
+			margin-left: 2em;
+			border: 1px solid blue;
+			background-color: #5D9CEC;
+			color: white;
+		}
+		#moreAdd {
+			display: inline-block;
+			width: 8em;
+			box-sizing: boder-box;
+			padding: 2px;
+			border: 1px solid #B5BDD5;
+			font-size: 12px;
+			margin-left: 2em;
+			text-align: center;
+			color: #CFD7EF;
+			cursor: pointer;
+		}
+		#more-addition {
+			margin-top: 2em;
+			width: 100%;
+			height: auto;
+		}
+		.order-status {
+			margin-left: 20px
+		}
+		.addition1,.addition2 {
+			width: 100%;
+			margin-bottom: 20px;
+		}
+		input {
+			float: none;
+		}
+		#storeNo,.input-common {
+			width: 133px;
+			height: 20px;
+		}
+		.active {
+			background-color: #5D9CEC;
+			color: white;
+		}
+		.M-box a,.M-box span {
+			width: 25px;
+			display: inline-block;
+			height: 25px;
+			text-align: center;
+			line-height: 25px;
+			border: 1px solid #DDDDDD;
+		}
+		.remark-style{
+			white-space: pre-wrap;
+			word-wrap: break-word;
+		}
+		.line{
+			width: 100%;
+			height: 1px;
+			border-bottom: 1px solid #DEE1E6;
+			margin: 3px 0;
+		}
+		.fuliao{
+			text-align: center;
+			padding: 0!important;
+		}
+		.opener {
+			color: blue;
+		}
+		.hideThis{
+			display:none;
+		}
+		.rowView {
+			width: 80%;
+    		display: flex;
+    		align-items: center;
+			padding: 10px 0;
+			margin: 0 auto;
+		}
+		.rowView>span {
+			min-width: 250px;
+			min-height: 20px;
+			line-height: 20px;
+			padding: 5px;
+		}
+		.rowView-right {
+			text-align: left;
+			padding: 5px 15px;
+			border: 1px solid #C1C1C1;
+			text-align: left;
+			color: blue;
+		}
+	</style>
+</head>
+
+<body>
+	<div style="margin-top:2em;">
+		<div class="query-top">
+			<span>
+				<label for="">请选择日期：</label>
+				<input type="text" class="runcode" id="cal1" readonly="readonly" />
+				<input type="text" class="runcode" id="cal2" readonly="readonly" />
+			</span>
+			<span class="order-status">
+				<label for="">请选择订单状态：</label>
+				<select name="" id="selectVal1" name="selectVal">
+					<option value="">请选择订单状态</option>
+					<option value="0">待发货</option>
+					<option value="1">已发货</option>
+					<option value="2">用户退货</option>
+					<option value="3">用户确认收货</option>
+					<option value="4">系统确认收货</option>
+					<option value="5">用户取消的订单</option>
+				</select>
+			</span>
+			<span id="moreAdd">更多查询条件 〉</span>
+			<input type="button" id="search" value="查询" />
+			<p class="top-right">订单总数：
+				<span id="order-count"></span>
+			</p>
+			<!-- <p class="money-count">总金额：<span id="money-count">88888</span>(加币)</p> -->
+		</div>
+		<div id="more-addition" style="display: none;">
+			<div class="addition2">
+				<span>
+					<label for="">请输入手机号：</label>
+					<input type="text" id="phoneNo" class="input-common" />
+				</span>
+				<span class="order-status">
+					<label for="">请输入用户编号：</label>
+					<input type="text" id="userNo" class="input-common" />
+				</span>
+				<span class="order-status">
+					<label for="">请选择支付状态：</label>
+					<select name="" id="selectVal2" name="selectVal2">
+						<option value=""></option>
+						<option value="0">待支付</option>
+						<option value="1">支付成功</option>
+						<option value="2">支付失败</option>
+					</select>
+				</span>
+			</div>
+			<div class="addition1">
+				<span>
+					<label for="">请输入订单编号：</label>
+					<input type="text" id="orderNo" class="input-common" />
+				</span>
+				<!-- <span class="order-status">
+					<label for="">请输入活动ID：</label>
+					<input type="text" id="activityId" class="input-common" />
+				</span> -->
+
+			</div>
+
+		</div>
+
+	</div>
+	<div class="result-show">
+
+	</div>
+	<div class="result-show1">
+
+	</div>
+	<div id="order-table">
+		<div class="dialog" id="dialog" style="display:none">
+			<div class="rowView">
+				<span style="width:145px;text-align:right">订单编号：</span>
+				<span id="orderNumber" class="rowView-right"></span>
+			</div>
+			<!-- <div class="rowView">
+				<span style="width:145px;text-align:right">用户手机号：</span>
+				<span id="userPhone" class="rowView-right"></span>
+			</div> -->
+			<div class="rowView">
+				<span style="width:145px;text-align:right">下单时间：</span>
+				<span id="orderTime" class="rowView-right"></span>
+			</div>
+			<div class="rowView">
+				<span style="width:145px;text-align:right">订单总金额：</span>
+				<span id="totalPrice" class="rowView-right"></span>
+			</div>
+			<div class="rowView">
+				<span style="width:145px;text-align:right">支付状态：</span>
+				<span id="payStatus" class="rowView-right"></span>
+			</div>
+			<div class="rowView">
+				<span style="width:145px;text-align:right">订单状态：</span>
+				<span id="orderStatus" class="rowView-right"></span>
+			</div>
+			<div class="rowView">
+				<span style="width:145px;text-align:right">商品信息：</span>
+				<span id="goodsInfo" class="rowView-right"></span>
+			</div>
+			<div class="rowView">
+				<span style="width:145px;text-align:right">用户备注：</span>
+				<span id="userRemark" class="rowView-right"></span>
+			</div>
+			<div class="rowView">
+				<span style="width:145px;text-align:right">物流编号：</span>
+				<span id="wuliuNo" class="rowView-right"></span>
+			</div>
+			<div class="rowView">
+				<span style="width:145px;text-align:right">收货人姓名：</span>
+				<span id="reciverName" class="rowView-right"></span>
+			</div>
+			<div class="rowView">
+				<span style="width:145px;text-align:right">收货人电话：</span>
+				<span id="reciverTel" class="rowView-right"></span>
+			</div>
+			<div class="rowView">
+				<span style="width:145px;text-align:right">收货地址：</span>
+				<span id="reciveAddr" class="rowView-right"></span>
+			</div>
+		</div>
+	</div>
+	<div class="wrapper">
+		<div class="eg">
+			<div class="M-box"></div>
+			<div class="tips">当前是第<span class="now">1</span>页,总共<span class="total"></span>页,总共<span class="count"></span>条数据</div>
+		</div>
+	</div>
+
+
+	<script type="text/javascript" src="../Scripts/lhgcore.min.js"></script>
+	<script type="text/javascript" src="../Scripts/lhgcalendar.min.js"></script>
+	<script type="text/javascript" src="../Scripts/order-query.js"></script>
+	<script type="text/javascript" src="../Scripts/jquery.pagination.js"></script>
+</body>
+
+</html>

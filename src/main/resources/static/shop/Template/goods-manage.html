@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>订单详情</title>
+  <link rel="stylesheet" type="text/css" href="../Styles/formui.css" />
+  <link rel="stylesheet" type="text/css" href="../Styles/base.css" />
+  <script type="text/javascript" src="../Scripts/jquery-1.7.2.js"></script>
+  <script type="text/javascript" src="../Scripts/tb.js"></script>
+  <script type="text/javascript" src="../Scripts/jquery-ui-1.8.22.custom.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../Styles/ui-lightness/jquery-ui-1.8.22.custom.css" />
+  <script type="text/javascript" src="../Scripts/product-edit.js"></script>
+  <script type="text/javascript" src="../Scripts/js.js"></script>
+
+  <style type="text/css">
+    a {
+      text-decoration: none;
+      color: #eee;
+      display: block;
+    }
+
+    .button {
+      width: 200px;
+      height: 50px;
+      border-radius: 20px;
+      text-align: center;
+      line-height: 50px;
+    }
+
+    .callout_button {
+      background: #FF5B5B;
+      margin: 0 auto;
+    }
+
+    .callout_button:hover {
+      background: red;
+    }
+
+    .close_button {
+      background: #363636;
+      margin: 0 auto;
+    }
+
+    .close_button:hover {
+      background: black;
+    }
+
+    .mask {
+      width: 100%;
+      height: 100%;
+      background: #000;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      opacity: 0.4;
+      z-index: 8000;
+      display: none;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .dialog {
+      width: 380px;
+      background: #fff;
+      position: absolute;
+      z-index: 9000;
+      padding-bottom: 10px;
+      display: none;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .dialog_head {
+      width: 100%;
+      height: 50px;
+      background: #4B4B4B;
+      text-align: center;
+      line-height: 50px;
+      color: #eee;
+      cursor: move;
+    }
+
+    .dialog_content {
+      width: 100%;
+      height: 300px;
+    }
+
+    .ui-widget-header {
+      border: 1px solid #586683 !important;
+      background: #586683 !important;
+      color: #ffffff;
+      font-weight: bold;
+    }
+
+    .new-add {
+      width: 7em;
+      height: 2em;
+      line-height: 2em;
+      background-color: #E6EEF7;
+      text-align: center;
+      border: 2px solid #E6EAF6;
+      margin: 2em 0em;
+      font-size: 1.2em;
+    }
+
+    .new-add a {
+      text-decoration: none;
+    }
+
+    .edit-content {
+      display: inline-block;
+      color: blue!important;
+      font-size: 1.2em;
+      text-decoration: underline!important;
+      cursor: pointer;
+    }
+
+    .padding-distance {
+      padding-right: 1em;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="new-add">
+    <a href="add-goods.html"> 新增商品 </a>
+  </div>
+  <div class="dialog" id="mydialog1" style='display:none;'>
+    <div>确认删除该商品？</div>
+  </div>
+  <div id="goods-show"></div>
+</body>
+
+</html>

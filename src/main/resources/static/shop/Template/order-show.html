@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>订单查询</title>
+	<!-- <link rel="stylesheet" type="text/css" href="../Styles/lhgcalendar.css" /> -->
+	<link rel="stylesheet" type="text/css" href="../Styles/formui.css" />
+	<link rel="stylesheet" type="text/css" href="../Styles/base.css" />
+	<link rel="stylesheet" type="text/css" href="../Styles/style.css" />
+	<link rel="stylesheet" type="text/css" href="../Styles/pagination.css" />
+	<link rel="stylesheet" type="text/css" href="../Styles/ui-lightness/jquery-ui-1.8.22.custom.css" />
+	<style>
+		.total {
+			color: red;
+		}
+		.runcode {
+			border: 1px solid #ddd;
+			background: url(../img/iconDate.gif) center right no-repeat #f7f7f7;
+			cursor: pointer;
+			font: 12px tahoma, arial;
+			height: 21px;
+			width: 150px;
+		}
+		.query-top {
+			display: inline-block;
+		}
+		.top-right,.money-count {
+			display: inline-block;
+			margin-left: 3em;
+		}
+		#cal2 {
+			margin-left: 10px;
+		}
+		.store-number {
+			margin-left: 20px;
+		}
+		#search {
+			width: 4em;
+			margin-left: 2em;
+			border: 1px solid blue;
+			background-color: #5D9CEC;
+			color: white;
+		}
+		#moreAdd {
+			display: inline-block;
+			width: 8em;
+			box-sizing: boder-box;
+			padding: 2px;
+			border: 1px solid #B5BDD5;
+			font-size: 12px;
+			margin-left: 2em;
+			text-align: center;
+			color: #CFD7EF;
+			cursor: pointer;
+		}
+		#more-addition {
+			margin-top: 2em;
+			width: 100%;
+			height: auto;
+		}
+		.order-status {
+			margin-left: 20px
+		}
+		.addition1,.addition2 {
+			width: 100%;
+			margin-bottom: 20px;
+		}
+		input {
+			float: none;
+		}
+		#storeNo,.input-common {
+			width: 133px;
+			height: 20px;
+		}
+		.active {
+			background-color: #5D9CEC;
+			color: white;
+		}
+		.M-box a,.M-box span {
+			width: 25px;
+			display: inline-block;
+			height: 25px;
+			text-align: center;
+			line-height: 25px;
+			border: 1px solid #DDDDDD;
+		}
+		.remark-style{
+			white-space: pre-wrap;
+			word-wrap: break-word;
+		}
+		.line{
+			width: 100%;
+			height: 1px;
+			border-bottom: 1px solid #DEE1E6;
+			margin: 3px 0;
+		}
+		.fuliao{
+			text-align: center;
+			padding: 0!important;
+		}
+		.opener {
+			color: blue;
+		}
+		.hideThis{
+			display:none;
+		}
+		.rowView {
+			width: 80%;
+    		display: flex;
+    		align-items: center;
+			padding: 10px 0;
+			margin: 0 auto;
+		}
+		.rowView>span {
+			min-width: 250px;
+			min-height: 20px;
+			line-height: 20px;
+			padding: 5px;
+		}
+		.rowView-right {
+			text-align: left;
+			padding: 5px 15px;
+			border: 1px solid #C1C1C1;
+			text-align: left;
+			color: blue;
+		}
+		.opener1,.opener {
+			color: blue;
+			cursor: pointer;
+		}
+		.rowView>input {
+			min-width: 250px;
+			min-height: 20px;
+			line-height: 20px;
+			padding: 5px;
+		}
+		#logistics {
+			border: 1px solid #BDBDBD;
+			color: blue;
+			width: 266px;
+			background-color: #EEEEEE;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="result-show"></div>
+
+	<div id="order-table">
+		<div class="dialog" id="dialog" style="display:none">
+			<div class="rowView">
+				<span style="width:145px;text-align:right">订单编号：</span>
+				<span id="orderNumber" class="rowView-right"></span>
+			</div>
+			<!-- <div class="rowView">
+				<span style="width:145px;text-align:right">用户手机号：</span>
+				<span id="userPhone" class="rowView-right"></span>
+			</div> -->
+			<div class="rowView">
+				<span style="width:145px;text-align:right">收货人姓名：</span>
+				<span id="reciverName" class="rowView-right"></span>
+			</div>
+			<div class="rowView">
+				<span style="width:145px;text-align:right">收货人电话：</span>
+				<span id="reciverTel" class="rowView-right"></span>
+			</div>
+			<div class="rowView">
+				<span style="width:145px;text-align:right">收货地址：</span>
+				<span id="reciveAddr" class="rowView-right"></span>
+			</div>
+			<div class="rowView">
+				<span style="width:145px;text-align:right">下单时间：</span>
+				<span id="orderTime" class="rowView-right"></span>
+			</div>
+			<div class="rowView">
+				<span style="width:145px;text-align:right">订单总金额：</span>
+				<span id="totalPrice" class="rowView-right"></span>
+			</div>
+			<div class="rowView">
+				<span style="width:145px;text-align:right">支付状态：</span>
+				<span id="payStatus" class="rowView-right"></span>
+			</div>
+			<div class="rowView">
+				<span style="width:145px;text-align:right">订单状态：</span>
+				<span id="orderStatus" class="rowView-right"></span>
+			</div>
+			<div class="rowView">
+				<span style="width:145px;text-align:right">商品信息：</span>
+				<span id="goodsInfo" class="rowView-right"></span>
+			</div>
+			<div class="rowView">
+				<span style="width:145px;text-align:right">用户备注：</span>
+				<span id="userRemark" class="rowView-right"></span>
+			</div>
+			<div class="rowView">
+				<span style="width:145px;text-align:right">物流编号：</span>
+				<span id="wuliuNo" class="rowView-right"></span>
+			</div>
+			<!-- <div class="rowView">
+				<span style="width:145px;text-align:right">收货地址：</span>
+				<span id="reciveAddr" class="rowView-right"></span>
+			</div> -->
+		</div>
+	</div>
+
+	<!-- 点击输入物流编号 -->
+	<div class="dialog" id="dialog1" style="display:none">
+		<div class="rowView">
+			<span style="width:145px;text-align:right">订单编号：</span>
+			<span id="dialogOrdernumber" class="rowView-right"></span>
+		</div>
+		<div class="rowView">
+			<span style="width:145px;text-align:right">请输入物流编号：</span>
+			<input type="text" name="logistics" id="logistics" value="" />
+		</div>
+	</div>
+
+	<!--提示框-->
+	<div class="zhezhao"></div>
+	<div class="remove">
+		<div class="removerChid">
+			<h2>提示</h2>
+			<div class="removeMain">
+				<p>成功</p>
+				<!--<a href="#" id="yes">确定</a>-->
+				<a href="#" id="no">确定</a>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="wrapper">
+		<div class="eg">
+			<div class="M-box"></div>
+			<div>当前是第<span class="now">1</span>页,总共<span class="total"> </span>页,总共<span class="count"></span>条数据</div>
+		</div>
+	</div>
+	<!-- <script type="text/javascript" src="../Scripts/lhgcore.min.js"></script>
+	<script type="text/javascript" src="../Scripts/lhgcalendar.min.js"></script> -->
+	<script type="text/javascript" src="../Scripts/jquery-1.7.2.js"></script>
+	<script type="text/javascript" src="../Scripts/js.js"></script>
+	<script type="text/javascript" src="../Scripts/jquery-ui-1.8.22.custom.min.js"></script>
+	<script type="text/javascript" src="../Scripts/order-show.js"></script>
+	<script type="text/javascript" src="../Scripts/jquery.pagination.js"></script>
+</body>
+</html>
