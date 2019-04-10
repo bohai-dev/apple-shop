@@ -26,12 +26,12 @@ function submitFrom(form){
 			contentType:"application/json",
 			success:function(result){
 				if (result.rspCode==00000) {
-					if(result.data.userType==0){
-                        window.location.href="index.html?storeNo="+result.data.storeNo+"&userType="+result.data.userType+"&userName="+result.data.userName;
-					}else{
-                        showZhezhaoMsg('用户名或密码错误！')
-					}
 
+                    if(result.data.userType==0){
+                        window.location.href="index.html?storeNo="+result.data.storeNo+"&userType="+result.data.userType+"&userName="+result.data.userName;
+                    }else{
+                        showZhezhaoMsg('用户名或密码错误！')
+                    }
 
 //					console.log(result.data.storeNo+"~~~~"+result.data.userType+"~~~~"+result.data.userName)
 				} else{

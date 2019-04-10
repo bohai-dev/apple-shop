@@ -21,7 +21,7 @@ public interface TeaClassInfoMapper {
 
     int updateByPrimaryKey(TeaClassInfo record);
     
-    @Select(value="select * from TEA_CLASS_INFO order by INDEX_NO")
+    @Select(value="select * from TEA_CLASS_INFO where delete_flag = '0' order by INDEX_NO")
     List<TeaClassInfo> selectAll();
     
     List<TeaClassInfo> selectByCondition(TeaClassInfo classInfo);

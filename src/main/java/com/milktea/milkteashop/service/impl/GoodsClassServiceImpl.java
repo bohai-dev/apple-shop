@@ -97,7 +97,12 @@ public class GoodsClassServiceImpl implements GoodsClassService {
         }
         
         try {
-            this.classInfoMapper.deleteByPrimaryKey(classId);
+            //this.classInfoMapper.deleteByPrimaryKey(classId);
+            TeaClassInfo teaClassInfo=new TeaClassInfo();
+            teaClassInfo.setClassId(classId);
+            teaClassInfo.setDeleteFlag("1");
+            this.classInfoMapper.updateByPrimaryKeySelective(teaClassInfo);
+
         } catch (Exception e) {
             logger.error(MilkTeaErrorConstant.DATABASE_ACCESS_FAILURE.getCnErrorMsg(), e);
             throw new MilkTeaException(MilkTeaErrorConstant.DATABASE_ACCESS_FAILURE, e);

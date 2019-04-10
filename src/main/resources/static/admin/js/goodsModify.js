@@ -290,9 +290,10 @@ function queryGoods(form){
 						'<th>店铺编号</th><th>商品分类</th><th>商品名称</th><th>商品简介</th><th>商品状态</th><th>操作</th>'+
 						'</tr>';
 				for (var i=0;i<res.data.length;i++) {
+					//console.log(res.data[i].classInfos[0])
 					elemGoodsInfo +='<tr>'+
 							'<td>'+res.data[i].storeNo+'</td>'+
-							'<td>'+res.data[i].classInfos[0].cnClassName+'</td>'+
+							'<td>'+(res.data[i].classInfos)[0].cnClassName+'</td>'+
 							'<td>'+res.data[i].cnGoodsName+'</td>'+
 //							'<td>'+res.data[i].cnGoodsPictureBig+'</td>'+
 							'<td>'+(res.data[i].cnGoodsIntroduction?res.data[i].cnGoodsIntroduction:'-')+'</td>'+
