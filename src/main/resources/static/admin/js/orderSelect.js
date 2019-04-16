@@ -96,7 +96,8 @@ $(function(){
 										'<td class="orderDetailBtn">详情</td>'+
 									'</tr>'
 								}
-		//						console.log(elemOrderData)
+                                console.log('---------------------')
+								console.log(elemOrderData)
 								$('.flexDirCol .table').empty().append(elemOrderData);
 								$('.orderDetail').hide().empty().append(elemOrderDetails)
 							} else{
@@ -240,7 +241,7 @@ function queryOrder(form){
 								'<td>'+(res.rows[i].postAddress?res.rows[i].postAddress:"")+'</td>'+
 								'<td>'+(res.rows[i].postTel?res.rows[i].postTel:"")+'</td>'+
 								'<td>'+res.rows[i].orderPrice+'</td>'+
-								'<td>'+(res.rows[i].orderStatus==0?'下单成功，待发货':res.rows[i].orderStatus==1?'已发货，待收货':res.rows[i].orderStatus==2?'用户退货':res.rows[i].orderStatus==3?'用户退货':res.rows[i].orderStatus==4?'系统确认收货（15天后由客服联系用户后在后台确认收货），本单完成':'用户取消订单')+'</td>'+
+								'<td>'+(res.rows[i].orderStatus==0?'下单成功，待发货':res.rows[i].orderStatus==1?'已发货，待收货':res.rows[i].orderStatus==2?'用户退货':res.rows[i].orderStatus==3?'用户已确认收货':res.rows[i].orderStatus==4?'系统确认收货':'用户取消订单')+'</td>'+
 								'<td>'+res.rows[i].orderTime+'</td>'+
 								'<td>'+(res.rows[i].payStatus==0?'待支付':res.rows[i].payStatus==1?'支付成功':'支付失败')+'</td>'+
 //								'<td>'+(res.rows[i].remark?res.rows[i].remark:"-")+'</td>'+
